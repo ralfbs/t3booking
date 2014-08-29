@@ -1,0 +1,163 @@
+
+plugin.tx_t3booking {
+	view {
+		templateRootPath = {$plugin.tx_t3booking.view.templateRootPath}
+		partialRootPath = {$plugin.tx_t3booking.view.partialRootPath}
+		layoutRootPath = {$plugin.tx_t3booking.view.layoutRootPath}
+	}
+	persistence {
+		storagePid = {$plugin.tx_t3booking.persistence.storagePid}
+	}
+	features {
+		# uncomment the following line to enable the new Property Mapper.
+		rewrittenPropertyMapper = 1
+	}
+}
+
+plugin.tx_t3booking._CSS_DEFAULT_STYLE (
+	textarea.f3-form-error {
+		background-color:#FF9F9F;
+		border: 1px #FF0000 solid;
+	}
+
+	input.f3-form-error {
+		background-color:#FF9F9F;
+		border: 1px #FF0000 solid;
+	}
+
+	.tx-t3booking table {
+		border-collapse:separate;
+		border-spacing:10px;
+	}
+
+	.tx-t3booking table th {
+		font-weight:bold;
+	}
+
+	.tx-t3booking table td {
+		vertical-align:top;
+	}
+
+	.typo3-messages .message-error {
+		color:red;
+		display: none;
+	}
+
+	.typo3-messages .message-ok {
+		color:green;
+	}
+
+)
+
+
+page.includeCSS.t3booking = {$plugin.tx_t3booking.view.cssFile}
+page.includeCSS.fullcalendar = EXT:t3booking/Resources/Public/fullcalendar-2.1.0/fullcalendar.css
+page.includeCSS.jqueryui = EXT:t3booking/Resources/Public/datetimepicker/jquery.datetimepicker.css
+
+page.includeJS.moment = EXT:t3booking/Resources/Public/fullcalendar-2.1.0/lib/moment.min.js
+page.includeJS.jquery = EXT:t3booking/Resources/Public/fullcalendar-2.1.0/lib/jquery.min.js
+page.includeJS.jqueryui = EXT:t3booking/Resources/Public/fullcalendar-2.1.0/lib/jquery-ui.custom.min.js
+page.includeJS.fullcalendar = EXT:t3booking/Resources/Public/fullcalendar-2.1.0/fullcalendar.min.js
+page.includeJS.fullcalendarde = EXT:t3booking/Resources/Public/fullcalendar-2.1.0/lang/de.js
+page.includeJS.datepicker = EXT:t3booking/Resources/Public/datetimepicker/jquery.datetimepicker.js
+
+
+
+// type=5000: Kummulierte Liste aller Belegungen (pro Zeit zusammengefasst)
+lib.occupation = USER
+lib.occupation {
+    userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+    extensionName = T3booking
+    pluginName = Json
+    vendorName = Hri
+    controller = Booking
+    switchableControllerActions {
+      Booking {
+        1 = occupationJson
+      }
+    }
+    view < plugin.tx_t3booking.view
+    persistence < plugin.tx_t3booking.persistence
+    settings < plugin.tx_t3booking.settings
+}
+jsonOccupations = PAGE
+jsonOccupations {
+    typeNum = 5000
+    config {
+        disableAllHeaderCode = 1
+        xhtml_cleaning = 0
+        admPanel = 0
+        debug = 0
+        additionalHeaders = Content-type: text/json
+        no_cache = 1
+    }
+    10 < lib.occupation
+}
+
+
+// type=5001: Liste aller Anfragen (einzelne Buchungen)
+lib.requests = USER
+lib.requests {
+    userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+    extensionName = T3booking
+    pluginName = Json
+    vendorName = Hri
+    controller = Booking
+    switchableControllerActions {
+      Booking {
+        1 = requestsJson
+      }
+    }
+    view < plugin.tx_t3booking.view
+    persistence < plugin.tx_t3booking.persistence
+    settings < plugin.tx_t3booking.settings
+}
+jsonRequests = PAGE
+jsonRequests {
+    typeNum = 5001
+    config {
+        disableAllHeaderCode = 1
+        xhtml_cleaning = 0
+        admPanel = 0
+        debug = 0
+        additionalHeaders = Content-type: text/json
+        no_cache = 1
+    }
+    10 < lib.requests
+}
+
+
+
+// type=5000: Liste aller Buchungen
+lib.bookings = USER
+lib.bookings {
+    userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+    extensionName = T3booking
+    pluginName = Json
+    vendorName = Hri
+    controller = Booking
+    switchableControllerActions {
+      Booking {
+        1 = bookingsJson
+      }
+    }
+    view < plugin.tx_t3booking.view
+    persistence < plugin.tx_t3booking.persistence
+    settings < plugin.tx_t3booking.settings
+}
+jsonBookings = PAGE
+jsonBookings {
+    typeNum = 5002
+    config {
+        disableAllHeaderCode = 1
+        xhtml_cleaning = 0
+        admPanel = 0
+        debug = 0
+        additionalHeaders = Content-type: text/json
+        no_cache = 1
+    }
+    10 < lib.bookings
+}
+
+
+

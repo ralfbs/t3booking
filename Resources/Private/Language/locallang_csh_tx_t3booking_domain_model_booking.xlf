@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2014-08-26T14:59:18Z" product-name="t3booking">
+		<header/>
+		<body>
+			<trans-unit id="start_at.description">
+				<source>Starzeitpunkt der Buchung</source>
+			</trans-unit>
+			<trans-unit id="status.description">
+				<source>status</source>
+			</trans-unit>
+			<trans-unit id="end_at.description">
+				<source>Endzeitpunkt der Buchung</source>
+			</trans-unit>
+			<trans-unit id="quantity.description">
+				<source>Quantity to be booked</source>
+			</trans-unit>
+			<trans-unit id="user.description">
+				<source>user</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

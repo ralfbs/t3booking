@@ -1,0 +1,34 @@
+<f:layout name="Default"/>
+
+
+<f:section name="main">
+
+    <script>
+        $(document).ready(function () {
+            $(".date").datetimepicker({
+                lang: 'de',
+                format: 'd.m.Y H:i',
+                minDate: 0,
+                startDate: "2014-08-27",
+                step: 30,
+                minTime: "8:00",
+                maxTime: "23:01"
+            });
+        });
+
+    </script>
+
+    <h1>Anfrage bearbeiten</h1>
+
+    <f:flashMessages renderMode="div"/>
+
+    <f:render partial="FormErrors" arguments="{object:Booking}"/>
+
+    <f:form action="update" name="booking" object="{booking}">
+        <f:render partial="Booking/FormFields" arguments="{booking:booking}"/>
+        <f:form.submit value="Speichern"/>
+    </f:form>
+    <f:link.action action="requests">Zurück</f:link.action>
+
+    <f:link.action action="delete" arguments="{booking : booking}" class="button btn">stornieren</f:link.action>
+</f:section>

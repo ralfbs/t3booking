@@ -1,0 +1,35 @@
+
+<table class="tx-t3booking" >
+	<tr>
+		<td>
+			<f:translate key="tx_t3booking_domain_model_booking.start_at" />
+		</td>
+		<td>
+		{booking.startAt -> f:format.date()}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_t3booking_domain_model_booking.status" />
+		</td>
+		<td>
+		{booking.status}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_t3booking_domain_model_booking.end_at" />
+		</td>
+		<td>
+		{booking.endAt -> f:format.date()}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_t3booking_domain_model_booking.quantity" />
+		</td>
+		<td>
+		{booking.quantity}
+		</td>
+	</tr>
+</table>

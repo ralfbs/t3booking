@@ -1,0 +1,17 @@
+
+plugin.tx_t3booking {
+	view {
+		# cat=plugin.tx_t3booking/file; type=string; label=Path to template root (FE)
+		templateRootPath = EXT:t3booking/Resources/Private/Templates/
+		# cat=plugin.tx_t3booking/file; type=string; label=Path to template partials (FE)
+		partialRootPath = EXT:t3booking/Resources/Private/Partials/
+		# cat=plugin.tx_t3booking/file; type=string; label=Path to template layouts (FE)
+		layoutRootPath = EXT:t3booking/Resources/Private/Layouts/
+		# cat=plugin.tx_t3booking/file; type=string; label=Path to css File to include (FE)
+        cssFile = EXT:t3booking/Resources/Public/Css/t3booking.css
+	}
+	persistence {
+		# cat=plugin.tx_t3booking//a; type=string; label=Default storage PID
+		storagePid =
+	}
+}

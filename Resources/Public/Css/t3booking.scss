@@ -1,0 +1,75 @@
+/**
+ * Köln Bäder - Lentpark Buchungen
+ * SCSS Style Definitionen
+ *
+ * @author Ralf Schneider <ralf@hr-interactive.de>
+ * @since: 2014-08-27
+ */
+
+// Allgemeine Farbdefinitionen
+$gray: #808080;
+
+$tableBorder: $gray;
+
+// Tabellen
+$tableBackground: white;
+$tableBackgroundGreen: rgba(0, 255, 0, 0.4);
+$tableBackgroundOrange: #ffa500;
+$tableBackgroundRed: #c00;
+
+$darkenWeekend: 10%;
+
+// Wochenende: Automatische Umrechnungen
+$tableBackgroundWeekend: darken($tableBackground, $darkenWeekend);
+$tableBackgroundGreenWeekend: darken($tableBackgroundGreen, $darkenWeekend);
+$tableBackgroundOrangeWeekend: darken($tableBackgroundOrange, $darkenWeekend);
+$tableBackgroundRedWeekend: darken($tableBackgroundRed, $darkenWeekend);
+
+.tx-t3booking {
+
+  ul.errors {
+    color: #c00;
+    .error_field_name {
+      font-weight: bold;
+    }
+    > li {
+      margin-bottom: 10px;
+    }
+  }
+  table.week {
+    border-collapse: collapse;
+    th {
+      border: 1px solid $tableBorder;
+      width: 100px;
+      &.day_6,
+      &.day_7 {
+        background-color: $tableBackgroundWeekend;
+      }
+    }
+    td {
+      border: 1px solid $tableBorder;
+      height: 15px;
+      background-color: $tableBackgroundGreen;
+      &.day_6,
+      &.day_7 {
+        background-color: $tableBackgroundGreenWeekend;
+      }
+      &.status_orange {
+        background-color: $tableBackgroundOrange;
+        &.day_6,
+        &.day_7 {
+          background-color: $tableBackgroundOrangeWeekend;
+        }
+      }
+      &.status_red {
+        background-color: $tableBackgroundRed;
+        &.day_6,
+        &.day_7 {
+          background-color: $tableBackgroundRedWeekend;
+        }
+      }
+    }
+
+  }
+
+}

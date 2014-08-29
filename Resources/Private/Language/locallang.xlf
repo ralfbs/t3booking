@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+    <file source-language="en" datatype="plaintext" original="messages" date="2014-08-26T14:59:18Z"
+          product-name="t3booking">
+        <header/>
+        <body>
+            <trans-unit id="tx_t3booking_domain_model_booking">
+                <source>Booking</source>
+            </trans-unit>
+            <trans-unit id="tx_t3booking_domain_model_booking.start_at">
+                <source>Anfang</source>
+            </trans-unit>
+            <trans-unit id="tx_t3booking_domain_model_booking.status">
+                <source>Status</source>
+            </trans-unit>
+            <trans-unit id="tx_t3booking_domain_model_booking.end_at">
+                <source>Ende</source>
+            </trans-unit>
+            <trans-unit id="tx_t3booking_domain_model_booking.quantity">
+                <source>Anzahl</source>
+            </trans-unit>
+            <trans-unit id="tx_t3booking_domain_model_booking.user">
+                <source>User</source>
+            </trans-unit>
+
+            <trans-unit id="error.1221561046">
+                <source>Die Anzahl ist ungültig (Werte müssen zwischen %1$s und %2$s liegen).</source>
+            </trans-unit>
+            <trans-unit id="tx_t3booking_domain_model_booking.booking.quantity">
+                <source>Anzahl</source>
+            </trans-unit>
+            <trans-unit id="tx_t3booking_domain_model_booking.newBooking.quantity">
+                <source>Anzahl</source>
+            </trans-unit>
+
+            <trans-unit id="tx_t3booking_domain_model_booking.booking.startAt">
+                <source>Anfang</source>
+            </trans-unit>
+            <trans-unit id="tx_t3booking_domain_model_booking.newBooking.startAt">
+                <source>Anfang</source>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

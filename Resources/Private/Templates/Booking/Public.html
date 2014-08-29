@@ -1,0 +1,49 @@
+{namespace hri = Hri\T3booking\ViewHelpers}
+<f:layout name="Default"/>
+
+<f:section name="main">
+
+    <script>
+
+        $(document).ready(function () {
+
+            $('#calendar').fullCalendar({
+                header: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'agendaWeek,month'
+                },
+                defaultDate: '<f:format.date format="Y-m-d">{today}</f:format.date>',
+                defaultView: 'agendaWeek',
+                firstDay: 1,
+                weekNumbers: true,
+                allDaySlot: false,
+                minTime: "08:00",
+                maxTime: "23:00",
+
+                editable: false,
+                selectable: true,
+                // selectHelper: true,
+                select: function (start, end, jsEvent, view) {
+                    // alert("Ausgwählt von " + start);
+                },
+
+                eventLimit: true, // allow "more" link when too many events
+                eventSources: [
+                    {
+                        // ajax BookingController:occupationAction
+                        url: '/?type=5000',
+                        // cache: true,
+                        // color: '#ff0000',    // an option!
+                        textColor: '#333'  // an option!
+                    }
+                ]
+            });
+
+        });
+
+    </script>
+
+    <div id='calendar'></div>
+
+</f:section>

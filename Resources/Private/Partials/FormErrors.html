@@ -1,0 +1,23 @@
+<f:form.validationResults for="{object}">
+    <f:if condition="{validationResults.flattenedErrors}">
+        <ul class="errors">
+            <f:for each="{validationResults.flattenedErrors}" key="propertyPath" as="errors">
+                <li>
+                    <span class="error_field_name">
+                        <f:translate key="tx_t3booking_domain_model_booking.{propertyPath}">{propertyPath}</f:translate>
+                    </span>
+                    <ul>
+                        <f:for each="{errors}" as="propertyError">
+                            <li>
+                                <f:translate
+                                        key="error.{propertyError.code}"
+                                        arguments="{propertyError.arguments}">{propertyError.message}
+                                </f:translate>
+                            </li>
+                        </f:for>
+                    </ul>
+                </li>
+            </f:for>
+        </ul>
+    </f:if>
+</f:form.validationResults>
