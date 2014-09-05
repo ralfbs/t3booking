@@ -6,26 +6,14 @@ if (!defined('TYPO3_MODE')) {
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
     $_EXTKEY,
     'Calendar',
-    'Kalender'
-);
-
-\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
-    $_EXTKEY,
-    'Request',
-    'Booking Request'
+    'Calender'
 );
 
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
     $_EXTKEY,
-    'Signoff',
-    'Liste der Anfragen'
-);
-
-\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
-    $_EXTKEY,
-    'Bookingslist',
-    'Liste der bestehenden Buchungen'
+    'Bookings',
+    'Bookings, Requests & Lists'
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
@@ -64,7 +52,12 @@ $GLOBALS['TCA']['tx_t3booking_domain_model_booking'] = array(
     'tx_t3booking_domain_model_booking'
 );
 
-// Flexform hinzufügen
+// Flexform hinzufügen: Kalendar
 $pluginSignature = "t3booking_calendar";
 $TCA['tt_content']['types']['list']['subtypes_addlist'][$pluginSignature] = 'pi_flexform';
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue($pluginSignature, 'FILE:EXT:t3booking/Configuration/FlexForms/Calendar.xml');
+
+// FlexForm: Bookingslist
+$pluginSignature = "t3booking_bookings";
+$TCA['tt_content']['types']['list']['subtypes_addlist'][$pluginSignature] = 'pi_flexform';
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue($pluginSignature, 'FILE:EXT:t3booking/Configuration/FlexForms/Bookings.xml');

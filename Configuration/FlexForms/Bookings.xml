@@ -16,12 +16,16 @@
                                 <type>select</type>
                                 <items type="array">
                                     <numIndex index="1" type="array">
-                                        <numIndex index="0">Public</numIndex>
-                                        <numIndex index="1">Calendar->public</numIndex>
+                                        <numIndex index="0">List of Requests</numIndex>
+                                        <numIndex index="1">Booking->requests;Booking->show;Booking->edit;Booking->update;Booking->confirm;Booking->delete</numIndex>
                                     </numIndex>
                                     <numIndex index="2" type="array">
-                                        <numIndex index="0">Admin</numIndex>
-                                        <numIndex index="1">Calendar->admin</numIndex>
+                                        <numIndex index="0">List of Bookings</numIndex>
+                                        <numIndex index="1">Booking->bookings;Booking->show;Booking->edit;Booking->update;Booking->confirm;Booking->delete</numIndex>
+                                    </numIndex>
+                                    <numIndex index="3" type="array">
+                                        <numIndex index="0">New Booking (Request)</numIndex>
+                                        <numIndex index="1">Booking->new;Booking->create;Booking->show</numIndex>
                                     </numIndex>
                                 </items>
                             </config>

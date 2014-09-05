@@ -177,27 +177,31 @@ class BookingController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
      * Admin: Update
      *
      * @param \Hri\T3booking\Domain\Model\Booking $booking
+     * @param \String $redirect
+     * @ignorevalidation $redirect
      * @return void
      */
-    public function updateAction(\Hri\T3booking\Domain\Model\Booking $booking)
+    public function updateAction(\Hri\T3booking\Domain\Model\Booking $booking, $redirect="bookings")
     {
         $this->flashMessageContainer->add('Buchung aktualisiert', null, \TYPO3\CMS\Core\Messaging\FlashMessage::OK);
         $this->bookingRepository->update($booking);
         $this->signalSlotDispatcher->dispatch(__CLASS__, 'bookingUpdate', array('booking' => $booking));
-        $this->redirect('requests');
+        $this->redirect($redirect);
     }
 
     /**
      * Admin delete
      *
      * @param \Hri\T3booking\Domain\Model\Booking $booking
+     * @param \String $redirect
+     * @ignorevalidation $redirect
      * @return void
      */
-    public function deleteAction(\Hri\T3booking\Domain\Model\Booking $booking)
+    public function deleteAction(\Hri\T3booking\Domain\Model\Booking $booking, $redirect="bookings")
     {
         $this->flashMessageContainer->add('Buchung gelöscht', null, \TYPO3\CMS\Core\Messaging\FlashMessage::OK);
         $this->bookingRepository->remove($booking);
-        $this->redirect('requests');
+        $this->redirect('bookings');
     }
 
 
