@@ -12,24 +12,18 @@
     font-weight: bold; }
   .tx-t3booking ul.errors > li {
     margin-bottom: 10px; }
-.tx-t3booking table.week {
-  border-collapse: collapse; }
-  .tx-t3booking table.week th {
-    border: 1px solid gray;
-    width: 100px; }
-    .tx-t3booking table.week th.day_6, .tx-t3booking table.week th.day_7 {
-      background-color: #e6e6e6; }
-  .tx-t3booking table.week td {
-    border: 1px solid gray;
-    height: 15px;
-    background-color: rgba(0, 255, 0, 0.4); }
-    .tx-t3booking table.week td.day_6, .tx-t3booking table.week td.day_7 {
-      background-color: rgba(0, 204, 0, 0.4); }
-    .tx-t3booking table.week td.status_orange {
-      background-color: orange; }
-      .tx-t3booking table.week td.status_orange.day_6, .tx-t3booking table.week td.status_orange.day_7 {
-        background-color: #cc8400; }
-    .tx-t3booking table.week td.status_red {
-      background-color: #cc0000; }
-      .tx-t3booking table.week td.status_red.day_6, .tx-t3booking table.week td.status_red.day_7 {
-        background-color: #990000; }
+.tx-t3booking table.tx-t3booking {
+  font-size: 14px;
+  font-family: arial, helvetica, clean, sans-serif;
+  color: #5b90bf; }
+  .tx-t3booking table.tx-t3booking tbody td {
+    border-left: 1px solid #5b90bf;
+    padding-left: 5px;
+    padding-right: 5px; }
+    .tx-t3booking table.tx-t3booking tbody td.cal, .tx-t3booking table.tx-t3booking tbody td.icon, .tx-t3booking table.tx-t3booking tbody td.date {
+      border: none; }
+    .tx-t3booking table.tx-t3booking tbody td.icon {
+      width: 30px;
+      text-align: center; }
+    .tx-t3booking table.tx-t3booking tbody td.company {
+      width: 250px; }

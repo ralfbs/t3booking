@@ -8,22 +8,9 @@
 
 // Allgemeine Farbdefinitionen
 $gray: #808080;
+$blue: #5B90BF;
 
 $tableBorder: $gray;
-
-// Tabellen
-$tableBackground: white;
-$tableBackgroundGreen: rgba(0, 255, 0, 0.4);
-$tableBackgroundOrange: #ffa500;
-$tableBackgroundRed: #c00;
-
-$darkenWeekend: 10%;
-
-// Wochenende: Automatische Umrechnungen
-$tableBackgroundWeekend: darken($tableBackground, $darkenWeekend);
-$tableBackgroundGreenWeekend: darken($tableBackgroundGreen, $darkenWeekend);
-$tableBackgroundOrangeWeekend: darken($tableBackgroundOrange, $darkenWeekend);
-$tableBackgroundRedWeekend: darken($tableBackgroundRed, $darkenWeekend);
 
 .tx-t3booking {
 
@@ -36,36 +23,29 @@ $tableBackgroundRedWeekend: darken($tableBackgroundRed, $darkenWeekend);
       margin-bottom: 10px;
     }
   }
-  table.week {
-    border-collapse: collapse;
-    th {
-      border: 1px solid $tableBorder;
-      width: 100px;
-      &.day_6,
-      &.day_7 {
-        background-color: $tableBackgroundWeekend;
-      }
+  table.tx-t3booking {
+    font-size: 14px;
+    font-family: arial, helvetica, clean, sans-serif;
+    color: $blue;
+    thead {
+
     }
-    td {
-      border: 1px solid $tableBorder;
-      height: 15px;
-      background-color: $tableBackgroundGreen;
-      &.day_6,
-      &.day_7 {
-        background-color: $tableBackgroundGreenWeekend;
-      }
-      &.status_orange {
-        background-color: $tableBackgroundOrange;
-        &.day_6,
-        &.day_7 {
-          background-color: $tableBackgroundOrangeWeekend;
+    tbody {
+      td {
+        border-left: 1px solid $blue;
+        padding-left: 5px;
+        padding-right: 5px;
+        &.cal,
+        &.icon,
+        &.date {
+          border: none;
         }
-      }
-      &.status_red {
-        background-color: $tableBackgroundRed;
-        &.day_6,
-        &.day_7 {
-          background-color: $tableBackgroundRedWeekend;
+        &.icon {
+          width: 30px;
+          text-align: center;
+        }
+        &.company {
+          width: 250px;
         }
       }
     }

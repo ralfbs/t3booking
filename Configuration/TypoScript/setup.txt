@@ -64,16 +64,16 @@ page.includeJS.datepicker = EXT:t3booking/Resources/Public/datetimepicker/jquery
 
 
 // type=5000: Kummulierte Liste aller Belegungen (pro Zeit zusammengefasst)
-lib.occupation = USER
-lib.occupation {
+lib.occupations = USER
+lib.occupations {
     userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
     extensionName = T3booking
     pluginName = Json
     vendorName = Hri
-    controller = Booking
+    controller = Json
     switchableControllerActions {
-      Booking {
-        1 = occupationJson
+      Json {
+        1 = occupations
       }
     }
     view < plugin.tx_t3booking.view
@@ -91,7 +91,7 @@ jsonOccupations {
         additionalHeaders = Content-type: text/json
         no_cache = 1
     }
-    10 < lib.occupation
+    10 < lib.occupations
 }
 
 
@@ -102,10 +102,10 @@ lib.requests {
     extensionName = T3booking
     pluginName = Json
     vendorName = Hri
-    controller = Booking
+    controller = Json
     switchableControllerActions {
-      Booking {
-        1 = requestsJson
+      Json {
+        1 = requests
       }
     }
     view < plugin.tx_t3booking.view
@@ -135,10 +135,10 @@ lib.bookings {
     extensionName = T3booking
     pluginName = Json
     vendorName = Hri
-    controller = Booking
+    controller = Json
     switchableControllerActions {
-      Booking {
-        1 = bookingsJson
+      Json {
+        1 = bookings
       }
     }
     view < plugin.tx_t3booking.view

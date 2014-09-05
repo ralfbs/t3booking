@@ -7,12 +7,12 @@ if (!defined('TYPO3_MODE')) {
     'Hri.' . $_EXTKEY,
     'Calendar',
     array(
-        'Booking' => 'public, week, day, year',
+        'Calendar' => 'public, admin',
 
     ),
     // non-cacheable actions
     array(
-        'Booking' => 'public, day, month, year',
+        // 'Calendar' => 'public',
 
     )
 );
@@ -31,31 +31,18 @@ if (!defined('TYPO3_MODE')) {
     )
 );
 
-\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-    'Hri.' . $_EXTKEY,
-    'Admincalendar',
-    array(
-        'Booking' => 'admin',
-
-    ),
-    // non-cacheable actions
-    array(
-        'Booking' => 'admin ',
-
-    )
-);
 
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'Hri.' . $_EXTKEY,
     'Signoff',
     array(
-        'Booking' => 'requests, edit, show, create, update, delete',
+        'Booking' => 'requests, edit, show, create, update, delete, new, confirm',
 
     ),
     // non-cacheable actions
     array(
-        'Booking' => 'requests, edit, create, update, delete, ',
+        'Booking' => 'requests, edit, show,create, update, delete, new, confirm',
     )
 );
 
@@ -77,12 +64,12 @@ if (!defined('TYPO3_MODE')) {
     'Hri.' . $_EXTKEY,
     'Json',
     array(
-        'Booking' => 'requestsJson, bookingsJson, occupationJson,',
+        'Json' => 'requests, bookings, occupations,',
 
     ),
     // non-cacheable actions
     array(
-        'Booking' => 'requestsJson, bookingsJson, occupationJson,',
+        'Booking' => 'requests, bookings, occupations,',
 
     )
 );

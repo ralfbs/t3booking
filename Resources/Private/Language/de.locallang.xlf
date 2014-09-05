@@ -1,42 +1,50 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-    <file source-language="en" datatype="plaintext" original="messages" date="2014-08-26T14:59:18Z"
+    <file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2014-08-26T14:59:18Z"
           product-name="t3booking">
         <header/>
         <body>
             <trans-unit id="tx_t3booking_domain_model_booking">
                 <source>Booking</source>
+                <target state="translated">Buchung</target>
             </trans-unit>
             <trans-unit id="tx_t3booking_domain_model_booking.start_at">
                 <source>Start</source>
+                <target state="translated">Anfang</target>
             </trans-unit>
             <trans-unit id="tx_t3booking_domain_model_booking.end_at">
                 <source>End</source>
+                <target state="translated">Ende</target>
             </trans-unit>
             <trans-unit id="tx_t3booking_domain_model_booking.date">
                 <source>Date</source>
+                <target state="translated">Datum</target>
             </trans-unit>
             <trans-unit id="tx_t3booking_domain_model_booking.time">
                 <source>Time</source>
+                <target state="translated">Zeit</target>
             </trans-unit>
             <trans-unit id="tx_t3booking_domain_model_booking.status">
                 <source>Status</source>
             </trans-unit>
             <trans-unit id="tx_t3booking_domain_model_booking.status.request">
                 <source>Request</source>
+                <target state="translated">Anfrage</target>
             </trans-unit>
             <trans-unit id="tx_t3booking_domain_model_booking.status.booking">
                 <source>Booking</source>
+                <target state="translated">Buchung</target>
             </trans-unit>
-
             <trans-unit id="tx_t3booking_domain_model_booking.quantity">
                 <source>Quantity</source>
+                <target state="translated">Anzahl</target>
             </trans-unit>
             <trans-unit id="tx_t3booking_domain_model_booking.unit">
                 <source>Pers.</source>
             </trans-unit>
             <trans-unit id="tx_t3booking_domain_model_booking.user">
                 <source>User</source>
+                <target state="translated">Benutzer</target>
             </trans-unit>
 
             <trans-unit id="tx_t3booking_domain_model_user.category">
@@ -44,6 +52,7 @@
             </trans-unit>
             <trans-unit id="tx_t3booking_domain_model_user.company">
                 <source>Company</source>
+                <target state="translated">Kunde</target>
             </trans-unit>
             <trans-unit id="tx_t3booking_domain_model_user.name">
                 <source>Name</source>
@@ -51,21 +60,27 @@
 
             <trans-unit id="tx_t3booking.show">
                 <source>Show</source>
+                <target state="translated">Zeigen</target>
             </trans-unit>
             <trans-unit id="tx_t3booking.delete">
                 <source>Delete</source>
+                <target state="translated">Löschen</target>
             </trans-unit>
             <trans-unit id="tx_t3booking.confirm">
                 <source>Confirm</source>
+                <target state="translated">Bestätigen</target>
             </trans-unit>
             <trans-unit id="tx_t3booking.edit">
                 <source>edit</source>
+                <target state="translated">Bearbeiten</target>
             </trans-unit>
             <trans-unit id="tx_t3booking.save">
                 <source>save</source>
+                <target state="translated">Speichern</target>
             </trans-unit>
             <trans-unit id="tx_t3booking.back">
                 <source>back</source>
+                <target state="translated">Zurück</target>
             </trans-unit>
 
             <trans-unit id="error.1221561046">
@@ -76,6 +91,7 @@
             </trans-unit>
             <trans-unit id="tx_t3booking_domain_model_booking.newBooking.quantity">
                 <source>Quantity</source>
+                <target state="translated">Anzahl</target>
             </trans-unit>
 
             <trans-unit id="tx_t3booking_domain_model_booking.booking.startAt">

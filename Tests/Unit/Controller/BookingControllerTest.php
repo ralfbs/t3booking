@@ -58,7 +58,6 @@ class BookingControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 		$view = $this->getMock('TYPO3\\CMS\\Extbase\\Mvc\\View\\ViewInterface');
 		$view->expects($this->once())->method('assign')->with('bookings', $allBookings);
 		$this->inject($this->subject, 'view', $view);
-
 		$this->subject->listAction();
 	}
 

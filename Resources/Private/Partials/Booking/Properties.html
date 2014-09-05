@@ -1,35 +1,46 @@
+<table class="tx-t3booking">
+    <tr>
+        <th scope="row">
+            <f:translate key="tx_t3booking_domain_model_user.company"/>
+        </th>
+        <td>
+            {booking.user.company}
+        </td>
+    </tr>
+    <tr>
+        <th scope="row">
+            <f:translate key="tx_t3booking_domain_model_booking.quantity"/>
+        </th>
+        <td>
+            {booking.quantity}
+        </td>
+    </tr>
+    <tr>
+        <th scope="row">
+            <f:translate key="tx_t3booking_domain_model_booking.date"/>
+        </th>
+        <td>
+            <f:format.date format="d.m.Y">{booking.startAt}</f:format.date>
+        </td>
+    </tr>
 
-<table class="tx-t3booking" >
-	<tr>
-		<td>
-			<f:translate key="tx_t3booking_domain_model_booking.start_at" />
-		</td>
-		<td>
-		{booking.startAt -> f:format.date()}
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<f:translate key="tx_t3booking_domain_model_booking.status" />
-		</td>
-		<td>
-		{booking.status}
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<f:translate key="tx_t3booking_domain_model_booking.end_at" />
-		</td>
-		<td>
-		{booking.endAt -> f:format.date()}
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<f:translate key="tx_t3booking_domain_model_booking.quantity" />
-		</td>
-		<td>
-		{booking.quantity}
-		</td>
-	</tr>
+    <tr>
+        <th scope="row">
+            <f:translate key="tx_t3booking_domain_model_booking.time"/>
+        </th>
+        <td>
+            <f:format.date format="H:i">{booking.startAt}</f:format.date>
+            -
+            <f:format.date format="H:i">{booking.endAt}</f:format.date>
+        </td>
+    </tr>
+
+    <tr>
+        <th scope="row">
+            <f:translate key="tx_t3booking_domain_model_booking.status"/>
+        </th>
+        <td>
+            {booking.status}
+        </td>
+    </tr>
 </table>

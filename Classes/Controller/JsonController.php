@@ -30,7 +30,7 @@ namespace Hri\T3booking\Controller;
 /**
  * BookingController
  */
-class BookingController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
+class JsonController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 {
 
     /**
@@ -43,192 +43,18 @@ class BookingController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 
 
     /**
-     * SingalSlotDispatcher
-     * @var \TYPO3\CMS\Extbase\SignalSlot\Dispatcher
-     * @inject
-     */
-    protected $signalSlotDispatcher;
-
-
-    /**
      *
      */
     public function initializeAction()
     {
-        // this configures the parsing
-        if (isset($this->arguments['newBooking'])) {
-            $this->arguments['newBooking']
-                ->getPropertyMappingConfiguration()
-                ->forProperty('startAt')
-                ->setTypeConverterOption('TYPO3\\CMS\\Extbase\\Property\\TypeConverter\\DateTimeConverter',
-                    \TYPO3\CMS\Extbase\Property\TypeConverter\DateTimeConverter::CONFIGURATION_DATE_FORMAT, 'd.m.Y H:i');
 
-            $this->arguments['newBooking']
-                ->getPropertyMappingConfiguration()
-                ->forProperty('endAt')
-                ->setTypeConverterOption('TYPO3\\CMS\\Extbase\\Property\\TypeConverter\\DateTimeConverter',
-                    \TYPO3\CMS\Extbase\Property\TypeConverter\DateTimeConverter::CONFIGURATION_DATE_FORMAT, 'd.m.Y H:i');
-        }
-
-        // this configures the parsing
-        if (isset($this->arguments['booking'])) {
-            $this->arguments['booking']
-                ->getPropertyMappingConfiguration()
-                ->forProperty('startAt')
-                ->setTypeConverterOption('TYPO3\\CMS\\Extbase\\Property\\TypeConverter\\DateTimeConverter',
-                    \TYPO3\CMS\Extbase\Property\TypeConverter\DateTimeConverter::CONFIGURATION_DATE_FORMAT, 'd.m.Y H:i');
-
-            $this->arguments['booking']
-                ->getPropertyMappingConfiguration()
-                ->forProperty('endAt')
-                ->setTypeConverterOption('TYPO3\\CMS\\Extbase\\Property\\TypeConverter\\DateTimeConverter',
-                    \TYPO3\CMS\Extbase\Property\TypeConverter\DateTimeConverter::CONFIGURATION_DATE_FORMAT, 'd.m.Y H:i');
-        }
     }
-
-    /**
-     * requests - alle offenen Anfragen auflisten
-     *
-     * @return void
-     */
-    public function listAction()
-    {
-        $bookings = $this->bookingRepository->findAllFuture();
-        $this->view->assign('bookings', $bookings);
-    }
-
-
-    /**
-     * New: Öffentliche Anfrage
-     *
-     * @param \Hri\T3booking\Domain\Model\Booking $newBooking
-     * @ignorevalidation $newBooking
-     * @return void
-     */
-    public function newAction(\Hri\T3booking\Domain\Model\Booking $newBooking = NULL)
-    {
-        $this->view->assign('newBooking', $newBooking);
-    }
-
-    /**
-     * Create: Öffentliche Anfrage speichern
-     *
-     * @param \Hri\T3booking\Domain\Model\Booking $newBooking
-     * @return void
-     */
-    public function createAction(\Hri\T3booking\Domain\Model\Booking $newBooking)
-    {
-        $newBooking->setStatus(\Hri\T3booking\Domain\Model\Booking::REQUEST);
-        $this->bookingRepository->add($newBooking);
-        $this->flashMessageContainer->add('Neue Anfrage erhalten', null, \TYPO3\CMS\Core\Messaging\FlashMessage::OK);
-        $this->redirect('public');
-    }
-
-
-    /**
-     * Admin: requests - alle offenen Anfragen auflisten
-     *
-     * @return void
-     */
-    public function requestsAction()
-    {
-        $bookings = $this->bookingRepository->findAllFutureRequests();
-        $this->view->assign('bookings', $bookings);
-    }
-
-    /**
-     * Admin: bookings - alle fixen Buchungen auflisten
-     *
-     * @return void
-     */
-    public function bookingsAction()
-    {
-        $bookings = $this->bookingRepository->findAllFutureConfirmed();
-        $this->view->assign('bookings', $bookings);
-    }
-
-
-    /**
-     * Admin: Show
-     *
-     * @param \Hri\T3booking\Domain\Model\Booking $booking
-     * @return void
-     */
-    public function showAction(\Hri\T3booking\Domain\Model\Booking $booking)
-    {
-        $this->view->assign('booking', $booking);
-    }
-
-
-    /**
-     * Admin: Edit
-     *
-     * @param \Hri\T3booking\Domain\Model\Booking $booking
-     * @ignorevalidation $booking
-     * @return void
-     */
-    public function editAction(\Hri\T3booking\Domain\Model\Booking $booking)
-    {
-        $this->view->assign('booking', $booking);
-    }
-
-    /**
-     * Admin: Update
-     *
-     * @param \Hri\T3booking\Domain\Model\Booking $booking
-     * @return void
-     */
-    public function updateAction(\Hri\T3booking\Domain\Model\Booking $booking)
-    {
-        $this->bookingRepository->update($booking);
-        $this->signalSlotDispatcher->dispatch(__CLASS__, 'bookingUpdate', array('booking' => $booking));
-        $this->redirect('requests');
-    }
-
-    /**
-     * Admin delete
-     *
-     * @param \Hri\T3booking\Domain\Model\Booking $booking
-     * @return void
-     */
-    public function deleteAction(\Hri\T3booking\Domain\Model\Booking $booking)
-    {
-        $this->bookingRepository->remove($booking);
-        $this->redirect('requests');
-    }
-
-
-    /**
-     * action public Calendar
-     *
-     * @return void
-     */
-    public function publicAction()
-    {
-        $date = new \DateTime;
-
-        $this->view->assign('today', $date);
-    }
-
-
-    /**
-     * action admin Calendar
-     *
-     * @return void
-     */
-    public function adminAction()
-    {
-        $date = new \DateTime;
-
-        $this->view->assign('today', $date);
-    }
-
 
 
     /**
      * find all occupations
      */
-    public function occupationJsonAction()
+    public function occupationsAction()
     {
         $date = new \DateTime;
 
@@ -297,7 +123,7 @@ class BookingController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
      * find all occupations
      * type=5002
      */
-    public function bookingsJsonAction()
+    public function bookingsAction()
     {
         $bookings = $this->bookingRepository->findAllFutureConfirmed();
         $events = array();
@@ -316,7 +142,7 @@ class BookingController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
      * find all occupations
      * type=5001
      */
-    public function requestsJsonAction()
+    public function requestsAction()
     {
         $bookings = $this->bookingRepository->findAllFutureRequests();
         $events = array();
