@@ -24,8 +24,7 @@ if (!defined('TYPO3_MODE')) {
 
     ),
     // non-cacheable actions
-    array(
-        // 'Calendar' => 'public',
+    array( // 'Calendar' => 'public',
 
     )
 );
@@ -45,3 +44,12 @@ if (!defined('TYPO3_MODE')) {
     )
 );
 
+
+$signalSlotDispatcher = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
+    'TYPO3\\CMS\\Extbase\\SignalSlot\\Dispatcher'
+);
+$signalSlotDispatcher->connect(
+    'Hri\\T3booking\\Controller\\BookingController',
+    'bookingUpdate',
+    'Hri\\T3booking\\Service\\SignalService',
+    'handleBookingUpdate');
