@@ -1,30 +1,30 @@
 <?php
 namespace Hri\T3booking\Controller;
 
-    /***************************************************************
-     *
-     *  Copyright notice
-     *
-     *  (c) 2014 Ralf Schneider <ralf@hr-interactive.com>, hr-interactive
-     *
-     *  All rights reserved
-     *
-     *  This script is part of the TYPO3 project. The TYPO3 project is
-     *  free software; you can redistribute it and/or modify
-     *  it under the terms of the GNU General Public License as published by
-     *  the Free Software Foundation; either version 3 of the License, or
-     *  (at your option) any later version.
-     *
-     *  The GNU General Public License can be found at
-     *  http://www.gnu.org/copyleft/gpl.html.
-     *
-     *  This script is distributed in the hope that it will be useful,
-     *  but WITHOUT ANY WARRANTY; without even the implied warranty of
-     *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-     *  GNU General Public License for more details.
-     *
-     *  This copyright notice MUST APPEAR in all copies of the script!
-     ***************************************************************/
+/***************************************************************
+ *
+ *  Copyright notice
+ *
+ *  (c) 2014 Ralf Schneider <ralf@hr-interactive.com>, hr-interactive
+ *
+ *  All rights reserved
+ *
+ *  This script is part of the TYPO3 project. The TYPO3 project is
+ *  free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation; either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  The GNU General Public License can be found at
+ *  http://www.gnu.org/copyleft/gpl.html.
+ *
+ *  This script is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  This copyright notice MUST APPEAR in all copies of the script!
+ ***************************************************************/
 use Hri\T3booking\Domain\Model\Booking;
 
 
@@ -121,7 +121,8 @@ class BookingController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
     {
         $newBooking->setStatus(\Hri\T3booking\Domain\Model\Booking::REQUEST);
         $this->bookingRepository->add($newBooking);
-        $this->flashMessageContainer->add('Neue Anfrage gestellt', null, \TYPO3\CMS\Core\Messaging\FlashMessage::OK);
+        $flashMessage = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('tx_t3booking.flashmessage.request', 't3booking');
+        $this->flashMessageContainer->add($flashMessage, null, \TYPO3\CMS\Core\Messaging\FlashMessage::OK);
         $this->redirect('show');
     }
 
@@ -181,9 +182,10 @@ class BookingController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
      * @ignorevalidation $redirect
      * @return void
      */
-    public function updateAction(\Hri\T3booking\Domain\Model\Booking $booking, $redirect="bookings")
+    public function updateAction(\Hri\T3booking\Domain\Model\Booking $booking, $redirect = "bookings")
     {
-        $this->flashMessageContainer->add('Buchung aktualisiert', null, \TYPO3\CMS\Core\Messaging\FlashMessage::OK);
+        $flashMessage = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('tx_t3booking.flashmessage.update', 't3booking');
+        $this->flashMessageContainer->add($flashMessage, null, \TYPO3\CMS\Core\Messaging\FlashMessage::OK);
         $this->bookingRepository->update($booking);
         $this->signalSlotDispatcher->dispatch(__CLASS__, 'bookingUpdate', array('booking' => $booking));
         $this->redirect($redirect);
@@ -197,11 +199,13 @@ class BookingController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
      * @ignorevalidation $redirect
      * @return void
      */
-    public function deleteAction(\Hri\T3booking\Domain\Model\Booking $booking, $redirect="bookings")
+    public function deleteAction(\Hri\T3booking\Domain\Model\Booking $booking, $redirect = "bookings")
     {
-        $this->flashMessageContainer->add('Buchung gelöscht', null, \TYPO3\CMS\Core\Messaging\FlashMessage::OK);
+        $flashMessage = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('tx_t3booking.flashmessage.delete', 't3booking');
+        $this->flashMessageContainer->add($flashMessage, null, \TYPO3\CMS\Core\Messaging\FlashMessage::OK);
         $this->bookingRepository->remove($booking);
-        $this->redirect('bookings');
+        $this->signalSlotDispatcher->dispatch(__CLASS__, 'bookingDelete', array('booking' => $booking));
+        $this->redirect('show');
     }
 
 
@@ -213,10 +217,12 @@ class BookingController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
      */
     public function confirmAction(\Hri\T3booking\Domain\Model\Booking $booking)
     {
-        $this->flashMessageContainer->add('Buchung bestätigt und eingetragen', null, \TYPO3\CMS\Core\Messaging\FlashMessage::OK);
+        $flashMessage = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('tx_t3booking.flashmessage.confirm', 't3booking');
+        $this->flashMessageContainer->add($flashMessage, null, \TYPO3\CMS\Core\Messaging\FlashMessage::OK);
         $booking->setStatus(Booking::CONFIRMED);
         $this->bookingRepository->update($booking);
-        $this->redirect('requests');
+        $this->signalSlotDispatcher->dispatch(__CLASS__, 'bookingConfirm', array('booking' => $booking));
+        $this->redirect('show');
     }
 
 }

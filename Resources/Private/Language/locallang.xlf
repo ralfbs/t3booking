@@ -68,6 +68,19 @@
                 <source>back</source>
             </trans-unit>
 
+            <trans-unit id="tx_t3booking.flashmessage.request">
+                <source>Booking request stored</source>
+            </trans-unit>
+            <trans-unit id="tx_t3booking.flashmessage.update">
+                <source>Booking updated</source>
+            </trans-unit>
+            <trans-unit id="tx_t3booking.flashmessage.confirm">
+                <source>Booking confirmed</source>
+            </trans-unit>
+            <trans-unit id="tx_t3booking.flashmessage.delete">
+                <source>Booking deleted</source>
+            </trans-unit>
+
             <trans-unit id="error.1221561046">
                 <source>Die Anzahl ist ungültig (Werte müssen zwischen %1$s und %2$s liegen).</source>
             </trans-unit>
