@@ -1,46 +1,40 @@
-<table class="tx-t3booking">
+<table class="tx-t3booking-show">
+    <thead>
     <tr>
-        <th scope="row">
-            <f:translate key="tx_t3booking_domain_model_user.company"/>
-        </th>
-        <td>
+        <td colspan="2" class="company">
             {booking.user.company}
         </td>
     </tr>
     <tr>
-        <th scope="row">
-            <f:translate key="tx_t3booking_domain_model_booking.quantity"/>
-        </th>
-        <td>
-            {booking.quantity}
-        </td>
-    </tr>
-    <tr>
-        <th scope="row">
-            <f:translate key="tx_t3booking_domain_model_booking.date"/>
-        </th>
-        <td>
+        <td colspan="2">
+            {booking.classification.name} | {booking.quantity}
+            <f:translate key="tx_t3booking_domain_model_booking.unit"/>
+            |
             <f:format.date format="d.m.Y">{booking.startAt}</f:format.date>
-        </td>
-    </tr>
-
-    <tr>
-        <th scope="row">
-            <f:translate key="tx_t3booking_domain_model_booking.time"/>
-        </th>
-        <td>
+            |
             <f:format.date format="H:i">{booking.startAt}</f:format.date>
             -
             <f:format.date format="H:i">{booking.endAt}</f:format.date>
+            Uhr
         </td>
     </tr>
-
+    </thead>
+    <tbody>
     <tr>
-        <th scope="row">
-            <f:translate key="tx_t3booking_domain_model_booking.status"/>
-        </th>
+        <th>Gebucht am:</th>
         <td>
-            {booking.status}
+            <f:format.date format="d.m.Y">{booking.createdAt}</f:format.date>
+            um
+            <f:format.date format="H:i">{booking.createdAt}</f:format.date>
+            Uhr
         </td>
     </tr>
+    <tr>
+        <th>Gebucht von:</th>
+        <td>{booking.user.name} | {booking.user.telephone} |
+            <f:link.email email="{booking.user.email}">{booking.user.email}</f:link.email>
+        </td>
+    </tr>
+    </tbody>
 </table>
+

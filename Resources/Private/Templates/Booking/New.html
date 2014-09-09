@@ -7,10 +7,9 @@
     <script>
         $(document).ready(function () {
             $(".date").datetimepicker({
-                lang:'de',
-                format:'d.m.Y H:i',
+                lang: 'de',
+                format: 'd.m.Y H:i',
                 minDate: 0,
-                startDate: "2014-08-27",
                 step: 30,
                 minTime: "8:00",
                 maxTime: "23:01"
@@ -19,14 +18,16 @@
 
     </script>
 
-    <h1>Anfrage</h1>
+    <h1>
+        <f:translate key="tx_t3booking_domain_model_booking.headline.new"/>
+    </h1>
 
     <f:flashMessages renderMode="div"/>
 
     <f:render partial="FormErrors" arguments="{object:Booking}"/>
 
     <f:form action="create" name="newBooking" object="{newBooking}">
-        <f:render partial="Booking/PublicFields"/>
+        <f:render partial="Booking/PublicFields" arguments="{_all}"/>
         <f:form.submit value="Anfrage absenden"/>
     </f:form>
 </f:section>

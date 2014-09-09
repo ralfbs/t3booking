@@ -1,0 +1,17 @@
+{namespace hri = Hri\T3booking\ViewHelpers}
+
+<table class="tx-t3booking-show">
+    <tr>
+        <th>Bestätigt von:</th>
+        <td>{booking.confirmBy.name} um
+            <f:format.date format="H:i">{booking.confirmAt}</f:format.date>
+            Uhr
+        </td>
+    </tr>
+    <tr>
+        <th>Notizen:</th>
+        <td class="comment">{booking.confirmComment}</td>
+    </tr>
+    </tbody>
+</table>
+

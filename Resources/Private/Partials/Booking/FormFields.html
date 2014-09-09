@@ -1,19 +1,43 @@
-<label for="startAt">
-    <f:translate key="tx_t3booking_domain_model_booking.start_at"/>
-</label><br/>
-<f:form.textfield property="startAt" value="{booking.startAt->f:format.date(format: 'd.m.Y H:i')}" class="date start_date"/><br/>
+<table class="tx-t3booking-edit">
+    <tr>
+        <th><label for="startAt">
+            <f:translate key="tx_t3booking_domain_model_booking.start_at"/>:
+        </label></th>
+        <td>
+            <f:form.textfield property="startAt" value="{booking.startAt->f:format.date(format: 'd.m.Y H:i')}"
+                              class="date start_date"/>
+            <br/>
+        </td>
+    </tr>
+    <tr>
+        <th>
+            <label for="endAt">
+                <f:translate key="tx_t3booking_domain_model_booking.end_at"/>:
+            </label>
+        </th>
+        <td>
+            <f:form.textfield property="endAt" value="{booking.endAt->f:format.date(format: 'd.m.Y H:i')}"
+                              class="date start_date"/>
+        </td>
+    </tr>
+    <tr>
+        <th><label for="quantity">
+            <f:translate key="tx_t3booking_domain_model_booking.quantity"/>:
+        </label></th>
+        <td>
+            <f:form.textfield property="quantity"/>
+        </td>
+    </tr>
+    <tr>
+        <th><label for="confirmComment">
+            <f:translate key="tx_t3booking_domain_model_booking.confirm_comment"/>:
+        </label></th>
+        <td>
+            <f:form.textarea property="confirmComment"/>
+        </td>
+    </tr>
+</table>
 
-<label for="endAt">
-    <f:translate key="tx_t3booking_domain_model_booking.end_at"/>
-</label><br/>
-<f:form.textfield property="endAt" value="{booking.endAt->f:format.date(format: 'd.m.Y H:i')}" class="date start_date"/><br/>
 
-<label for="quantity">
-    <f:translate key="tx_t3booking_domain_model_booking.quantity"/>
-</label><br/>
-<f:form.textfield property="quantity"/><br/>
 
-<label for="status">
-    <f:translate key="tx_t3booking_domain_model_booking.status"/>
-</label><br/>
-<f:form.select property="status" options="{0: 'Anfrage', 1:'Gebucht'}"/><br/>
+

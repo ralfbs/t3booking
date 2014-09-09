@@ -1,14 +1,21 @@
-
 <label for="startAt">
-	<f:translate key="tx_t3booking_domain_model_booking.start_at" />
-</label><br />
-	<f:form.textfield property="startAt"  value="{booking.startAt->f:format.date()}" class="date start_date"/><br />
-</label><br />
+    <f:translate key="tx_t3booking_domain_model_booking.start_at"/>
+</label><br/>
+<f:form.textfield property="startAt" value="{booking.startAt->f:format.date()}" class="date start_date"/><br/>
+
 <label for="endAt">
-	<f:translate key="tx_t3booking_domain_model_booking.end_at" />
-</label><br />
-	<f:form.textfield property="endAt"  value="{booking.endAt->f:format.date()}" class="date end_date"/><br />
+    <f:translate key="tx_t3booking_domain_model_booking.end_at"/>
+</label><br/>
+<f:form.textfield property="endAt" value="{booking.endAt->f:format.date()}" class="date end_date"/><br/>
+
+<label for="classification">
+    <f:translate key="tx_t3booking_domain_model_booking.classification"/>
+</label><br/>
+<f:form.select property="classification"
+               options="{classifications}" optionLabelField="name" prependOptionLabel="Bitte wählen"/>
+<br/>
+
 <label for="quantity">
-	<f:translate key="tx_t3booking_domain_model_booking.quantity" />
-</label><br />
-	<f:form.textfield property="quantity" /><br />
+    <f:translate key="tx_t3booking_domain_model_booking.quantity"/>
+</label><br/>
+<f:form.textfield property="quantity"/><br/>

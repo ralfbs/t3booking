@@ -21,6 +21,56 @@
 			<trans-unit id="tx_t3booking_domain_model_booking.user">
 				<source>User</source>
 			</trans-unit>
-		</body>
+            <trans-unit id="tx_t3booking_domain_model_booking.comment">
+                <source>Comment</source>
+            </trans-unit>
+            <trans-unit id="tx_t3booking_domain_model_booking.created_at">
+                <source>Created At</source>
+            </trans-unit>
+            <trans-unit id="tx_t3booking_domain_model_booking.confirm_at">
+                <source>Confirm At</source>
+            </trans-unit>
+            <trans-unit id="tx_t3booking_domain_model_booking.confirm_by">
+                <source>Confirm By</source>
+            </trans-unit>
+            <trans-unit id="tx_t3booking_domain_model_booking.confirm_comment">
+                <source>Confirm Comment</source>
+            </trans-unit>
+            <trans-unit id="tx_t3booking_domain_model_booking.resource">
+                <source>Resource</source>
+            </trans-unit>
+            <trans-unit id="tx_t3booking_domain_model_booking.classification">
+                <source>Classification</source>
+            </trans-unit>
+
+            <trans-unit id="tx_t3booking_domain_model_classification">
+                <source>Classification</source>
+            </trans-unit>
+            <trans-unit id="tx_t3booking_domain_model_classification.name">
+                <source>Name</source>
+            </trans-unit>
+
+            <trans-unit id="tx_t3booking_domain_model_resource">
+                <source>Resource</source>
+            </trans-unit>
+            <trans-unit id="tx_t3booking_domain_model_resource.name">
+                <source>Name</source>
+            </trans-unit>
+            <trans-unit id="tx_t3booking_domain_model_resource.capacity">
+                <source>Capacity</source>
+            </trans-unit>
+
+            <trans-unit id="tx_t3booking_flexform.calendar.config">
+                <source>Calendar Settings</source>
+            </trans-unit>
+            <trans-unit id="tx_t3booking_flexform.calendar.occupations">
+                <source>Capacities and Summaries</source>
+            </trans-unit>
+            <trans-unit id="tx_t3booking_flexform.calendar.bookings">
+                <source>Booking Details</source>
+            </trans-unit>
+
+
+        </body>
 	</file>
 </xliff>

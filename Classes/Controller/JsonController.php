@@ -120,26 +120,7 @@ class JsonController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     }
 
     /**
-     * find all occupations
-     * type=5002
-     */
-    public function bookingsAction()
-    {
-        $bookings = $this->bookingRepository->findAllFutureConfirmed();
-        $events = array();
-        /* @var \Hri\T3booking\Domain\Model\Booking $booking */
-        foreach ($bookings as $booking) {
-            $event['start'] = $booking->getStartAt()->format(\DateTime::ISO8601);
-            $event['end'] = $booking->getEndAt()->format(\DateTime::ISO8601);
-            $event['title'] = $booking->getQuantity();
-            $events[] = $event;
-        }
-        return json_encode($events);
-    }
-
-
-    /**
-     * find all occupations
+     * find all Requests
      * type=5001
      */
     public function requestsAction()
@@ -150,10 +131,46 @@ class JsonController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         foreach ($bookings as $booking) {
             $event['start'] = $booking->getStartAt()->format(\DateTime::ISO8601);
             $event['end'] = $booking->getEndAt()->format(\DateTime::ISO8601);
-            $event['title'] = $booking->getQuantity();
+            $event['title'] = $this->getTitle($booking);
+            $event['tooltip'] = $booking->getConfirmComment();
             $events[] = $event;
         }
         return json_encode($events);
     }
 
+    /**
+     * find all Bookings
+     * type=5002
+     */
+    public function bookingsAction()
+    {
+        $bookings = $this->bookingRepository->findAllFutureConfirmed();
+        $events = array();
+        /* @var \Hri\T3booking\Domain\Model\Booking $booking */
+        foreach ($bookings as $booking) {
+            $event['start'] = $booking->getStartAt()->format(\DateTime::ISO8601);
+            $event['end'] = $booking->getEndAt()->format(\DateTime::ISO8601);
+            $event['title'] = $this->getTitle($booking);
+            $event['tooltip'] = $booking->getConfirmComment();
+            $events[] = $event;
+        }
+        return json_encode($events);
+    }
+
+
+
+
+    /**
+     * @param \Hri\T3booking\Domain\Model\Booking $booking
+     * @return \String
+     */
+    protected function getTitle(\Hri\T3booking\Domain\Model\Booking $booking)
+    {
+        $company = '';
+        if ($booking->getUser() instanceof \TYPO3\CMS\Extbase\Domain\Model\FrontendUser) {
+            $company = $booking->getUser()->getCompany();
+        }
+        $getTitle = sprintf("%s | %s | %s Personen", $company, $booking->getClassification()->getName(), $booking->getQuantity());
+        return $getTitle;
+    }
 }

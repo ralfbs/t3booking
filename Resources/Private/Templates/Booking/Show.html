@@ -2,11 +2,39 @@
 
 
 <f:section name="main">
-
     <f:flashMessages renderMode="div"/>
+
+    <h1>
+        <f:translate key="tx_t3booking_domain_model_booking.headline.show"/>
+    </h1>
+
+    <table class="tx-t3booking-buttons" style="display: block; float:right">
+        <tr>
+            <td>
+                <f:link.action action="delete" arguments="{booking:booking}">
+                    <f:image src="EXT:t3booking/Resources/Public/Icons/delete.png"
+                             alt="{f:translate(key: 'tx_t3booking.delete')}"/>
+                </f:link.action>
+            </td>
+            <td>
+                <f:link.action action="edit" arguments="{booking:booking}">
+                    <f:image src="EXT:t3booking/Resources/Public/Icons/edit.png"
+                             alt="{f:translate(key: 'tx_t3booking.edit')}"/>
+                </f:link.action>
+            </td>
+        </tr>
+    </table>
+
     <f:render partial="Booking/Properties" arguments="{booking:booking}"/>
 
-    <f:link.action action="edit" arguments="{booking:booking}" class="button btn">
-        <f:translate key="tx_t3booking.edit"/>
-    </f:link.action>
+    <f:if condition="{booking.status} == 0">
+        <f:then>
+            <f:render partial="Booking/PropertiesRequest" arguments="{booking:booking}"/>
+        </f:then>
+        <f:else>
+            <f:render partial="Booking/PropertiesBooking" arguments="{booking:booking}"/>
+        </f:else>
+    </f:if>
+
+
 </f:section>

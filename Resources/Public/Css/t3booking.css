@@ -6,24 +6,68 @@
  * @author Ralf Schneider <ralf@hr-interactive.de>
  * @since: 2014-08-27
  */
-.tx-t3booking ul.errors {
-  color: #c00; }
-  .tx-t3booking ul.errors .error_field_name {
-    font-weight: bold; }
-  .tx-t3booking ul.errors > li {
-    margin-bottom: 10px; }
-.tx-t3booking table.tx-t3booking {
-  font-size: 14px;
+.tx-t3booking {
   font-family: arial, helvetica, clean, sans-serif;
-  color: #5b90bf; }
-  .tx-t3booking table.tx-t3booking tbody td {
-    border-left: 1px solid #5b90bf;
-    padding-left: 5px;
-    padding-right: 5px; }
-    .tx-t3booking table.tx-t3booking tbody td.cal, .tx-t3booking table.tx-t3booking tbody td.icon, .tx-t3booking table.tx-t3booking tbody td.date {
-      border: none; }
-    .tx-t3booking table.tx-t3booking tbody td.icon {
-      width: 30px;
-      text-align: center; }
-    .tx-t3booking table.tx-t3booking tbody td.company {
-      width: 250px; }
+  font-size: 14px;
+  padding: 5px; }
+  .tx-t3booking h1 {
+    color: black;
+    margin: 5px 0 0 10px; }
+  .tx-t3booking ul.errors {
+    color: #c00; }
+    .tx-t3booking ul.errors .error_field_name {
+      font-weight: bold; }
+    .tx-t3booking ul.errors > li {
+      margin-bottom: 10px; }
+  .tx-t3booking table th, .tx-t3booking table td {
+    vertical-align: top; }
+  .tx-t3booking table.tx-t3booking-list {
+    color: #5b90bf; }
+    .tx-t3booking table.tx-t3booking-list thead {
+      display: none; }
+    .tx-t3booking table.tx-t3booking-list td {
+      border-left: 1px solid #5b90bf;
+      padding: 0px 5px; }
+      .tx-t3booking table.tx-t3booking-list td.cal, .tx-t3booking table.tx-t3booking-list td.icon, .tx-t3booking table.tx-t3booking-list td.date {
+        border: none; }
+      .tx-t3booking table.tx-t3booking-list td.icon {
+        width: 30px;
+        text-align: center; }
+  .tx-t3booking table.tx-t3booking-show {
+    border-collapse: separate;
+    border-spacing: 10px;
+    color: #5b90bf; }
+    .tx-t3booking table.tx-t3booking-show a {
+      text-decoration: underline; }
+    .tx-t3booking table.tx-t3booking-show .company {
+      font-weight: bold; }
+    .tx-t3booking table.tx-t3booking-show .comment {
+      background-color: yellow;
+      border: 1px solid #cccc00;
+      color: #333333;
+      padding: 3px 5px; }
+    .tx-t3booking table.tx-t3booking-show tbody {
+      color: #333; }
+      .tx-t3booking table.tx-t3booking-show tbody th {
+        text-align: left;
+        width: 120px;
+        font-weight: normal; }
+      .tx-t3booking table.tx-t3booking-show tbody td {
+        text-align: left; }
+  .tx-t3booking table.tx-t3booking-edit {
+    border-collapse: separate;
+    border-spacing: 10px; }
+    .tx-t3booking table.tx-t3booking-edit .comment {
+      background-color: yellow;
+      border: 1px solid #cccc00;
+      color: #333333;
+      padding: 3px 5px; }
+    .tx-t3booking table.tx-t3booking-edit .warning {
+      color: #f6090e;
+      font-weight: bold; }
+    .tx-t3booking table.tx-t3booking-edit th {
+      width: 120px;
+      text-align: left; }
+  .tx-t3booking table.tx-t3booking-buttons td {
+    width: 100px;
+    text-align: center; }

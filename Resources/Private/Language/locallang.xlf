@@ -28,7 +28,6 @@
             <trans-unit id="tx_t3booking_domain_model_booking.status.booking">
                 <source>Booking</source>
             </trans-unit>
-
             <trans-unit id="tx_t3booking_domain_model_booking.quantity">
                 <source>Quantity</source>
             </trans-unit>
@@ -37,6 +36,27 @@
             </trans-unit>
             <trans-unit id="tx_t3booking_domain_model_booking.user">
                 <source>User</source>
+            </trans-unit>
+            <trans-unit id="tx_t3booking_domain_model_booking.comment">
+                <source>Comment</source>
+            </trans-unit>
+            <trans-unit id="tx_t3booking_domain_model_booking.created_at">
+                <source>Created At</source>
+            </trans-unit>
+            <trans-unit id="tx_t3booking_domain_model_booking.confirm_at">
+                <source>Confirm At</source>
+            </trans-unit>
+            <trans-unit id="tx_t3booking_domain_model_booking.confirm_by">
+                <source>Confirm By</source>
+            </trans-unit>
+            <trans-unit id="tx_t3booking_domain_model_booking.confirm_comment">
+                <source>Confirm Comment</source>
+            </trans-unit>
+            <trans-unit id="tx_t3booking_domain_model_booking.resource">
+                <source>Resource</source>
+            </trans-unit>
+            <trans-unit id="tx_t3booking_domain_model_booking.classification">
+                <source>Classification</source>
             </trans-unit>
 
             <trans-unit id="tx_t3booking_domain_model_user.category">
@@ -48,6 +68,14 @@
             <trans-unit id="tx_t3booking_domain_model_user.name">
                 <source>Name</source>
             </trans-unit>
+
+            <trans-unit id="tx_t3booking_domain_model_booking.headline.new">
+                <source>New Request</source>
+            </trans-unit>
+            <trans-unit id="tx_t3booking_domain_model_booking.headline.show">
+                <source>Booking Details</source>
+            </trans-unit>
+
 
             <trans-unit id="tx_t3booking.show">
                 <source>Show</source>
@@ -67,6 +95,7 @@
             <trans-unit id="tx_t3booking.back">
                 <source>back</source>
             </trans-unit>
+
 
             <trans-unit id="tx_t3booking.flashmessage.request">
                 <source>Booking request stored</source>

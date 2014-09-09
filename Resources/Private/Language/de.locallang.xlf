@@ -40,11 +40,39 @@
                 <target state="translated">Anzahl</target>
             </trans-unit>
             <trans-unit id="tx_t3booking_domain_model_booking.unit">
-                <source>Pers.</source>
+                <source>Personen</source>
             </trans-unit>
             <trans-unit id="tx_t3booking_domain_model_booking.user">
                 <source>User</source>
                 <target state="translated">Benutzer</target>
+            </trans-unit>
+            <trans-unit id="tx_t3booking_domain_model_booking.comment">
+                <source>Comment</source>
+                <target state="translated">Bemerkung</target>
+            </trans-unit>
+            <trans-unit id="tx_t3booking_domain_model_booking.created_at">
+                <source>Created At</source>
+                <target state="translated">Gebucht am</target>
+            </trans-unit>
+            <trans-unit id="tx_t3booking_domain_model_booking.confirm_at">
+                <source>Confirm At</source>
+                <target state="translated">Bestätigt am</target>
+            </trans-unit>
+            <trans-unit id="tx_t3booking_domain_model_booking.confirm_by">
+                <source>Confirm By</source>
+                <target state="translated">Bestätigt von</target>
+            </trans-unit>
+            <trans-unit id="tx_t3booking_domain_model_booking.confirm_comment">
+                <source>Confirm Comment</source>
+                <target state="translated">Notizen</target>
+            </trans-unit>
+            <trans-unit id="tx_t3booking_domain_model_booking.resource">
+                <source>Resource</source>
+                <target state="translated">Resource</target>
+            </trans-unit>
+            <trans-unit id="tx_t3booking_domain_model_booking.classification">
+                <source>Classification</source>
+                <target state="translated">Klasse</target>
             </trans-unit>
 
             <trans-unit id="tx_t3booking_domain_model_user.category">
@@ -56,6 +84,16 @@
             </trans-unit>
             <trans-unit id="tx_t3booking_domain_model_user.name">
                 <source>Name</source>
+            </trans-unit>
+
+
+            <trans-unit id="tx_t3booking_domain_model_booking.headline.new">
+                <source>New Request</source>
+                <target state="translated">Neue Anfrage</target>
+            </trans-unit>
+            <trans-unit id="tx_t3booking_domain_model_booking.headline.show">
+                <source>Booking Details</source>
+                <source state="translated">Detailinformation Buchung</source>
             </trans-unit>
 
             <trans-unit id="tx_t3booking.show">
@@ -82,6 +120,25 @@
                 <source>back</source>
                 <target state="translated">Zurück</target>
             </trans-unit>
+
+
+            <trans-unit id="tx_t3booking.flashmessage.request">
+                <source>Booking request stored</source>
+                <target state="translated">Buchungsanfrage gespeichert</target>
+            </trans-unit>
+            <trans-unit id="tx_t3booking.flashmessage.update">
+                <source>Booking updated</source>
+                <target state="translated">Buchung aktualisiert</target>
+            </trans-unit>
+            <trans-unit id="tx_t3booking.flashmessage.confirm">
+                <source>Booking confirmed</source>
+                <target state="translated">Buchung bestätigt</target>
+            </trans-unit>
+            <trans-unit id="tx_t3booking.flashmessage.delete">
+                <source>Booking deleted</source>
+                <target state="translated">Buchung gelöscht</target>
+            </trans-unit>
+
 
             <trans-unit id="error.1221561046">
                 <source>Die Anzahl ist ungültig (Werte müssen zwischen %1$s und %2$s liegen).</source>

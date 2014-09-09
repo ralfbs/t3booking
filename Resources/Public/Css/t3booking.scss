@@ -9,10 +9,21 @@
 // Allgemeine Farbdefinitionen
 $gray: #808080;
 $blue: #5B90BF;
+$red: #F6090E;
 
 $tableBorder: $gray;
 
 .tx-t3booking {
+
+  font-family: arial, helvetica, clean, sans-serif;
+  font-size: 14px;
+
+  padding: 5px;
+
+  h1 {
+    color: black;
+    margin: 5px 0 0 10px;
+  }
 
   ul.errors {
     color: #c00;
@@ -23,33 +34,82 @@ $tableBorder: $gray;
       margin-bottom: 10px;
     }
   }
-  table.tx-t3booking {
-    font-size: 14px;
-    font-family: arial, helvetica, clean, sans-serif;
+  table {
+    th,td {
+      vertical-align: top;
+    }
+  }
+  table.tx-t3booking-list {
     color: $blue;
     thead {
-
+      display: none;
     }
-    tbody {
-      td {
-        border-left: 1px solid $blue;
-        padding-left: 5px;
-        padding-right: 5px;
-        &.cal,
-        &.icon,
-        &.date {
-          border: none;
-        }
-        &.icon {
-          width: 30px;
-          text-align: center;
-        }
-        &.company {
-          width: 250px;
-        }
+    td {
+      border-left: 1px solid $blue;
+      padding: 0px 5px;
+      &.cal,
+      &.icon,
+      &.date {
+        border: none;
+      }
+      &.icon {
+        width: 30px;
+        text-align: center;
       }
     }
+  }
+  table.tx-t3booking-show {
 
+    border-collapse: separate;
+    border-spacing: 10px;
+    color: $blue;
+    a {
+      text-decoration: underline;
+    }
+    .company {
+      font-weight: bold;
+    }
+    .comment {
+      background-color: yellow;
+      border: 1px solid darken(yellow, 10%);
+      color: rgb(51,51,51);
+      padding: 3px 5px;
+    }
+    tbody {
+      color: #333;
+      th {
+        text-align: left;
+        width: 120px;
+        font-weight: normal;
+      }
+      td {
+        text-align: left;
+      }
+    }
+  }
+  table.tx-t3booking-edit {
+    border-collapse: separate;
+    border-spacing: 10px;
+    .comment {
+      background-color: yellow;
+      border: 1px solid darken(yellow, 10%);
+      color: rgb(51,51,51);
+      padding: 3px 5px;
+    }
+    .warning {
+      color: $red;
+      font-weight: bold;
+    }
+    th {
+      width: 120px;
+      text-align: left;
+    }
+  }
+  table.tx-t3booking-buttons {
+    td {
+      width: 100px;
+      text-align: center;
+    }
   }
 
 }

@@ -25,19 +25,6 @@ plugin.tx_t3booking._CSS_DEFAULT_STYLE (
 		border: 1px #FF0000 solid;
 	}
 
-	.tx-t3booking table {
-		border-collapse:separate;
-		border-spacing:10px;
-	}
-
-	.tx-t3booking table th {
-		font-weight:bold;
-	}
-
-	.tx-t3booking table td {
-		vertical-align:top;
-	}
-
 	.typo3-messages .message-error {
 		color:red;
 		display: none;
@@ -49,6 +36,13 @@ plugin.tx_t3booking._CSS_DEFAULT_STYLE (
 
 )
 
+# config.tx_extbase.persistence.classes {
+#    Hri/T3booking/Domain/Model/Classification {
+#	    mapping {
+#            tableName = tx_t3booking_domain_model_classification
+#        }
+#    }
+#}
 
 page.includeCSS.t3booking = {$plugin.tx_t3booking.view.cssFile}
 page.includeCSS.fullcalendar = EXT:t3booking/Resources/Public/fullcalendar-2.1.0/fullcalendar.css
@@ -60,7 +54,7 @@ page.includeJS.jqueryui = EXT:t3booking/Resources/Public/fullcalendar-2.1.0/lib/
 page.includeJS.fullcalendar = EXT:t3booking/Resources/Public/fullcalendar-2.1.0/fullcalendar.min.js
 page.includeJS.fullcalendarde = EXT:t3booking/Resources/Public/fullcalendar-2.1.0/lang/de.js
 page.includeJS.datepicker = EXT:t3booking/Resources/Public/datetimepicker/jquery.datetimepicker.js
-
+# page.includeJS.qtip = EXT:t3booking/Resources/Public/jquery.qtip.min.js
 
 
 // type=5000: Kummulierte Liste aller Belegungen (pro Zeit zusammengefasst)

@@ -1,5 +1,5 @@
 <?php
-namespace Hri\T3booking\Utility;
+namespace Hri\T3booking\Domain\Repository;
 
     /***************************************************************
      *
@@ -27,27 +27,33 @@ namespace Hri\T3booking\Utility;
      ***************************************************************/
 
 /**
- * Email utility class
+ * The repository for Resources
  */
-class Email
+class ClassificationRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 {
 
+    /**
+     * @var \TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings
+     */
+    protected $querySettings;
 
-    public static function send($controller = null)
+    /**
+     *
+     */
+    public function initializeObject()
     {
-        mail("ralf@pedalis.de", "foo", "bar");
+        // @see http://forge.typo3.org/projects/typo3v4-mvc/wiki/Default_Orderings_and_Query_Settings_in_Repository
+        // $this->querySettings = $this->objectManager->get('TYPO3\\CMS\\Extbase\\Persistence\\Generic\\Typo3QuerySettings');
+        // $this->querySettings->setRespectStoragePage(false);
     }
 
-
-    public static function log()
-    {
-        $filename = __DIR__ . '/../../../../../email.log';
-        $fp = fopen($filename, "a+");
-        fwrite($fp, "foo");
-        fclose($fp);
+    /**
+     * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+     */
+    public function findAll() {
+        $query = $this->createQuery();
+        $query->getQuerySettings()->setRespectStoragePage(false);
+        $query->getQuerySettings()->setRespectSysLanguage(false);
+        return $query->execute();
     }
 }
-
-Email::log();
-
-

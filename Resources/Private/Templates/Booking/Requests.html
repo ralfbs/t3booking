@@ -5,7 +5,7 @@
 
     <f:flashMessages renderMode="div"/>
 
-    <table class="tx-t3booking">
+    <table class="tx-t3booking-list">
         <thead>
         <tr>
             <th></th>
@@ -16,13 +16,11 @@
                 <f:translate key="tx_t3booking_domain_model_user.company"/>
             </th>
             <th scope="col">
-                <f:translate key="tx_t3booking_domain_model_user.category"/>
+                <f:translate key="tx_t3booking_domain_model_user.classification"/>
             </th>
             <th scope="col">
                 <f:translate key="tx_t3booking_domain_model_booking.quantity"/>
             </th>
-            <th></th>
-            <th></th>
             <th></th>
         </tr>
         </thead>
@@ -42,31 +40,20 @@
                     f:format.date(format: 'H:i')} - {booking.endAt -> f:format.date(format: 'H:i')}
                 </td>
                 <td class="company">{booking.user.company}</td>
-                <td class="category">{booking.user.name} Kl.</td>
+                <td class="classification">{booking.classification.name}</td>
                 <td class="quantity">
                     {booking.quantity}
                     <f:translate key="tx_t3booking_domain_model_booking.unit"/>
                 </td>
                 <td class="icon">
-                    <f:link.action action="show" arguments="{booking : booking}" class="btn">
+                    <f:link.action action="show" arguments="{booking : booking}">
                         <f:image src="EXT:t3booking/Resources/Public/Icons/show.png"
-                                 alt="{f:translate(key: 'LLL:EXT:t3booking/Resources/Private/Language/locallang.xlf:tx_t3booking.show')}"/>
-                    </f:link.action>
-                </td>
-                <td class="icon">
-                    <f:link.action action="confirm" arguments="{booking : booking}" class="btn">
-                        <f:image src="EXT:t3booking/Resources/Public/Icons/ok.png"
-                                 alt="{f:translate(key: 'LLL:EXT:t3booking/Resources/Private/Language/locallang.xlf:tx_t3booking.confirm')}"/>
-                    </f:link.action>
-                </td>
-                <td class="icon">
-                    <f:link.action action="delete" arguments="{booking : booking}" class="btn">
-                        <f:image src="EXT:t3booking/Resources/Public/Icons/delete.png"
-                                 alt="{f:translate(key: 'LLL:EXT:t3booking/Resources/Private/Language/locallang.xlf:tx_t3booking.delete')}"/>
+                                 alt="{f:translate(key: 'tx_t3booking.show')}"/>
                     </f:link.action>
                 </td>
             </tr>
         </f:for>
         </tbody>
     </table>
+
 </f:section>

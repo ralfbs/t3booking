@@ -34,7 +34,7 @@ class CalendarController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
 {
 
     /**
-     * action public Calendar
+     * action public Calendar - each slot shows summarized occupation & capacity
      *
      * @return void
      */
@@ -47,7 +47,7 @@ class CalendarController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
 
 
     /**
-     * action admin Calendar
+     * action admin Calendar - each booking is listed individu
      *
      * @return void
      */

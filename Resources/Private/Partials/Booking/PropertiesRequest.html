@@ -1,0 +1,25 @@
+<f:form action="confirm" name="booking" object="{booking}">
+
+    <table class="tx-t3booking-edit">
+        <tr>
+            <th></th>
+            <td class="warning">Buchung ist noch nicht bestätigt!</td>
+        </tr>
+        <tr>
+            <th><label for="confirmComment">
+                <f:translate key="tx_t3booking_domain_model_booking.confirm_comment"/>
+                :
+            </label></th>
+            <td>
+                <f:form.textarea property="confirmComment" cols="40" rows="4" class="comment"/>
+            </td>
+        </tr>
+        <tr>
+            <th></th>
+            <td>
+                <f:form.submit value="{f:translate(key: 'tx_t3booking.confirm')}"/>
+            </td>
+        </tr>
+    </table>
+
+</f:form>

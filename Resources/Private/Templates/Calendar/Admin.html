@@ -11,7 +11,7 @@
                 header: {
                     left: 'prev,next today',
                     center: 'title',
-                    right: 'agendaWeek,month'
+                    right: 'agendaDay,agendaWeek,month'
                 },
                 defaultDate: '<f:format.date format="Y-m-d">{today}</f:format.date>',
                 defaultView: 'agendaWeek',
@@ -27,20 +27,23 @@
                 eventLimit: true, // allow "more" link when too many events
                 eventSources: [
                     {
-                        // ajax BookingController:occupationAction
-                        url: '/?type=5000',
-                        // cache: true,
-                        // color: '#ff0000',    // an option!
-                        textColor: '#333'  // an option!
-                    },
-                    {
                         // ajax BookingController:requestsJsonAction
                         url: '/?type=5001',
                         // cache: true,
                         color: 'yellow',    // an option!
                         textColor: '#333'  // an option!
+                    },
+                    {
+                        // ajax BookingController:bookingsJsonAction
+                        url: '/?type=5002',
+                        // cache: true,
+                        color: 'blue',    // an option!
+                        textColor: '#eee'  // an option!
                     }
-                ]
+                ],
+                eventRender: function(event, element) {
+                    element.attr('title', event.tooltip);
+                }
             });
 
         });

@@ -44,12 +44,35 @@ class BookingController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 
 
     /**
+     * classificationRepository
+     *
+     * @var \Hri\T3booking\Domain\Repository\ClassificationRepository
+     * @inject
+     */
+    protected $classificationRepository = NULL;
+
+
+    /**
+     * userRepository
+     *
+     * @var \TYPO3\CMS\Extbase\Domain\Repository\FrontendUserRepository
+     * @inject
+     */
+    protected $frontendUserRepository;
+
+
+    /**
      * SingalSlotDispatcher
      * @var \TYPO3\CMS\Extbase\SignalSlot\Dispatcher
      * @inject
      */
     protected $signalSlotDispatcher;
 
+    /**
+     * @var \TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager
+     * @inject
+     */
+    protected $persistenceManager;
 
     /**
      *
@@ -69,6 +92,7 @@ class BookingController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
                 ->forProperty('endAt')
                 ->setTypeConverterOption('TYPO3\\CMS\\Extbase\\Property\\TypeConverter\\DateTimeConverter',
                     \TYPO3\CMS\Extbase\Property\TypeConverter\DateTimeConverter::CONFIGURATION_DATE_FORMAT, 'd.m.Y H:i');
+
         }
 
         // this configures the parsing
@@ -87,17 +111,6 @@ class BookingController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
         }
     }
 
-    /**
-     * requests - alle offenen Anfragen auflisten
-     *
-     * @return void
-     */
-    public function listAction()
-    {
-        $bookings = $this->bookingRepository->findAllFuture();
-        $this->view->assign('bookings', $bookings);
-    }
-
 
     /**
      * New: Öffentliche Anfrage
@@ -108,6 +121,8 @@ class BookingController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
      */
     public function newAction(\Hri\T3booking\Domain\Model\Booking $newBooking = NULL)
     {
+        $classifications = $this->classificationRepository->findAll();
+        $this->view->assign('classifications', $classifications);
         $this->view->assign('newBooking', $newBooking);
     }
 
@@ -120,10 +135,23 @@ class BookingController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
     public function createAction(\Hri\T3booking\Domain\Model\Booking $newBooking)
     {
         $newBooking->setStatus(\Hri\T3booking\Domain\Model\Booking::REQUEST);
+        $user = $GLOBALS['TSFE']->fe_user->user;
+        $feuser = $this->frontendUserRepository->findByUid($user['uid']);
+        if ($feuser instanceof \TYPO3\CMS\Extbase\Domain\Model\FrontendUser) {
+            $newBooking->setUser($feuser);
+        }
+        $newBooking->setCreatedAt(new \DateTime());
         $this->bookingRepository->add($newBooking);
+        $this->persistenceManager->persistAll();
+
+        $this->signalSlotDispatcher->dispatch(__CLASS__, 'bookingCreate', array('booking' => $newBooking));
+
         $flashMessage = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('tx_t3booking.flashmessage.request', 't3booking');
         $this->flashMessageContainer->add($flashMessage, null, \TYPO3\CMS\Core\Messaging\FlashMessage::OK);
-        $this->redirect('show');
+        // $this->redirect('show', null, null, array('booking' => $newBooking));
+
+        $uri = $this->uriBuilder->setTargetPageUid($GLOBALS['TSFE']->id)->build();
+        $this->redirectToURI($uri);
     }
 
 
@@ -149,6 +177,16 @@ class BookingController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
         $this->view->assign('bookings', $bookings);
     }
 
+    /**
+     * requests - alle auflisten
+     *
+     * @return void
+     */
+    public function listAction()
+    {
+        $bookings = $this->bookingRepository->findAllFuture();
+        $this->view->assign('bookings', $bookings);
+    }
 
     /**
      * Admin: Show
@@ -178,34 +216,34 @@ class BookingController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
      * Admin: Update
      *
      * @param \Hri\T3booking\Domain\Model\Booking $booking
-     * @param \String $redirect
-     * @ignorevalidation $redirect
      * @return void
      */
-    public function updateAction(\Hri\T3booking\Domain\Model\Booking $booking, $redirect = "bookings")
+    public function updateAction(\Hri\T3booking\Domain\Model\Booking $booking)
     {
         $flashMessage = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('tx_t3booking.flashmessage.update', 't3booking');
         $this->flashMessageContainer->add($flashMessage, null, \TYPO3\CMS\Core\Messaging\FlashMessage::OK);
         $this->bookingRepository->update($booking);
         $this->signalSlotDispatcher->dispatch(__CLASS__, 'bookingUpdate', array('booking' => $booking));
-        $this->redirect($redirect);
+
+        $uri = $this->uriBuilder->setTargetPageUid($GLOBALS['TSFE']->id)->build();
+        $this->redirectToURI($uri);
     }
 
     /**
      * Admin delete
      *
      * @param \Hri\T3booking\Domain\Model\Booking $booking
-     * @param \String $redirect
-     * @ignorevalidation $redirect
      * @return void
      */
-    public function deleteAction(\Hri\T3booking\Domain\Model\Booking $booking, $redirect = "bookings")
+    public function deleteAction(\Hri\T3booking\Domain\Model\Booking $booking)
     {
         $flashMessage = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('tx_t3booking.flashmessage.delete', 't3booking');
         $this->flashMessageContainer->add($flashMessage, null, \TYPO3\CMS\Core\Messaging\FlashMessage::OK);
         $this->bookingRepository->remove($booking);
         $this->signalSlotDispatcher->dispatch(__CLASS__, 'bookingDelete', array('booking' => $booking));
-        $this->redirect('show');
+
+        $uri = $this->uriBuilder->setTargetPageUid($GLOBALS['TSFE']->id)->build();
+        $this->redirectToURI($uri);
     }
 
 
@@ -217,12 +255,20 @@ class BookingController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
      */
     public function confirmAction(\Hri\T3booking\Domain\Model\Booking $booking)
     {
+        $user = $GLOBALS['TSFE']->fe_user->user;
+        $feuser = $this->frontendUserRepository->findByUid($user['uid']);
+        if ($feuser instanceof \TYPO3\CMS\Extbase\Domain\Model\FrontendUser) {
+            $booking->setConfirmBy($feuser);
+        }
+        $booking->setConfirmAt(new \DateTime());
         $flashMessage = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('tx_t3booking.flashmessage.confirm', 't3booking');
         $this->flashMessageContainer->add($flashMessage, null, \TYPO3\CMS\Core\Messaging\FlashMessage::OK);
         $booking->setStatus(Booking::CONFIRMED);
         $this->bookingRepository->update($booking);
         $this->signalSlotDispatcher->dispatch(__CLASS__, 'bookingConfirm', array('booking' => $booking));
-        $this->redirect('show');
+
+        $uri = $this->uriBuilder->setTargetPageUid($GLOBALS['TSFE']->id)->build();
+        $this->redirectToURI($uri);
     }
 
 }

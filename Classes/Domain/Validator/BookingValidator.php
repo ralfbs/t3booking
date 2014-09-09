@@ -47,20 +47,20 @@ class BookingValidator extends \TYPO3\CMS\Extbase\Validation\Validator\AbstractV
             $start = (int)$object->getStartAt()->getTimestamp();
             $end = (int)$object->getEndAt()->getTimestamp();
         } catch (Exception $e) {
-            $this->result->forProperty('startAt')->addError(new \TYPO3\CMS\Extbase\Error\Error("Zeiten ungültig"));
+            $this->result->forProperty('startAt')->addError(new \TYPO3\CMS\Extbase\Error\Error("Zeiten ungültig",811));
             $ret = false;
         }
         // Startzeit nach Endzeit?
         if ($start >= $end) {
-            $this->result->forProperty('startAt')->addError(new \TYPO3\CMS\Extbase\Error\Error("Zeiten ungültig"));
+            $this->result->forProperty('startAt')->addError(new \TYPO3\CMS\Extbase\Error\Error("Zeiten ungültig",812));
             $ret = false;
         }
         if ($object->getQuantity() <= 0) {
-            $this->result->forProperty('quantity')->addError(new \TYPO3\CMS\Extbase\Error\Error("Ungültige Anzahl"));
+            $this->result->forProperty('quantity')->addError(new \TYPO3\CMS\Extbase\Error\Error("Ungültige Anzahl",813));
             $ret = false;
         }
         if ($object->getQuantity() > 750) {
-            $this->result->forProperty('quantity')->addError(new \TYPO3\CMS\Extbase\Error\Error("Maximale Anzahl zu diesem Zeitpunkt 750 Personen"));
+            $this->result->forProperty('quantity')->addError(new \TYPO3\CMS\Extbase\Error\Error("Maximale Anzahl zu diesem Zeitpunkt 750 Personen",814));
             $ret = false;
         }
 
