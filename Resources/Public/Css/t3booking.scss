@@ -13,6 +13,7 @@ $red: #F6090E;
 
 $tableBorder: $gray;
 
+
 .tx-t3booking {
 
   font-family: arial, helvetica, clean, sans-serif;
@@ -35,7 +36,7 @@ $tableBorder: $gray;
     }
   }
   table {
-    th,td {
+    th, td {
       vertical-align: top;
     }
   }
@@ -72,7 +73,7 @@ $tableBorder: $gray;
     .comment {
       background-color: yellow;
       border: 1px solid darken(yellow, 10%);
-      color: rgb(51,51,51);
+      color: rgb(51, 51, 51);
       padding: 3px 5px;
     }
     tbody {
@@ -90,10 +91,11 @@ $tableBorder: $gray;
   table.tx-t3booking-edit {
     border-collapse: separate;
     border-spacing: 10px;
-    .comment {
+    .comment,
+    textarea {
       background-color: yellow;
       border: 1px solid darken(yellow, 10%);
-      color: rgb(51,51,51);
+      color: rgb(51, 51, 51);
       padding: 3px 5px;
     }
     .warning {
@@ -111,5 +113,11 @@ $tableBorder: $gray;
       text-align: center;
     }
   }
+
+
+  .fc-time-grid-event {
+    max-width: 170px;
+  }
+
 
 }

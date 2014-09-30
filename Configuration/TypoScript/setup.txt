@@ -12,6 +12,19 @@ plugin.tx_t3booking {
 		# uncomment the following line to enable the new Property Mapper.
 		rewrittenPropertyMapper = 1
 	}
+	settings {
+	    defaultResourceId = {$plugin.tx_t3booking.settings.defaultResourceId}
+        emailSubjectRequest = {$plugin.tx_t3booking.settings.emailSubjectRequest}
+        emailSubjectConfirm = {$plugin.tx_t3booking.settings.emailSubjectConfirm}
+        emailSubjectUpdate = {$plugin.tx_t3booking.settings.emailSubjectUpdate}
+        emailSubjectDelete = {$plugin.tx_t3booking.settings.emailSubjectDelete}
+        emailAdmin = {$plugin.tx_t3booking.settings.emailAdmin}
+        emailFromAddress = {$plugin.tx_t3booking.settings.emailFromAddress}
+        emailFromName = {$plugin.tx_t3booking.settings.emailFromName}
+        emailRootPath = {$plugin.tx_t3booking.settings.emailRootPath}
+        debug = {$plugin.tx_t3booking.settings.debug}
+	}
+
 }
 
 plugin.tx_t3booking._CSS_DEFAULT_STYLE (
@@ -57,9 +70,9 @@ page.includeJS.datepicker = EXT:t3booking/Resources/Public/datetimepicker/jquery
 # page.includeJS.qtip = EXT:t3booking/Resources/Public/jquery.qtip.min.js
 
 
-// type=5000: Kummulierte Liste aller Belegungen (pro Zeit zusammengefasst)
-lib.occupations = USER
-lib.occupations {
+// type=5000: Kummulierte Liste freier Kapazitäten (pro Zeit zusammengefasst)
+lib.availabilities = USER
+lib.availabilities {
     userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
     extensionName = T3booking
     pluginName = Json
@@ -67,15 +80,15 @@ lib.occupations {
     controller = Json
     switchableControllerActions {
       Json {
-        1 = occupations
+        1 = availabilities
       }
     }
     view < plugin.tx_t3booking.view
     persistence < plugin.tx_t3booking.persistence
     settings < plugin.tx_t3booking.settings
 }
-jsonOccupations = PAGE
-jsonOccupations {
+jsonAvailabilities = PAGE
+jsonAvailabilities {
     typeNum = 5000
     config {
         disableAllHeaderCode = 1
@@ -85,7 +98,7 @@ jsonOccupations {
         additionalHeaders = Content-type: text/json
         no_cache = 1
     }
-    10 < lib.occupations
+    10 < lib.availabilities
 }
 
 
@@ -122,7 +135,7 @@ jsonRequests {
 
 
 
-// type=5000: Liste aller Buchungen
+// type=5002: Liste aller Buchungen
 lib.bookings = USER
 lib.bookings {
     userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
@@ -153,5 +166,34 @@ jsonBookings {
     10 < lib.bookings
 }
 
-
+// type=5003: Kummulierte Liste aller Belegungen (pro Zeit zusammengefasst)
+lib.occupations = USER
+lib.occupations {
+    userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+    extensionName = T3booking
+    pluginName = Json
+    vendorName = Hri
+    controller = Json
+    switchableControllerActions {
+      Json {
+        1 = occupations
+      }
+    }
+    view < plugin.tx_t3booking.view
+    persistence < plugin.tx_t3booking.persistence
+    settings < plugin.tx_t3booking.settings
+}
+jsonOccupations = PAGE
+jsonOccupations {
+    typeNum = 5003
+    config {
+        disableAllHeaderCode = 1
+        xhtml_cleaning = 0
+        admPanel = 0
+        debug = 0
+        additionalHeaders = Content-type: text/json
+        no_cache = 1
+    }
+    10 < lib.occupations
+}
 

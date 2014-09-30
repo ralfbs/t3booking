@@ -17,7 +17,7 @@ Introduction
 What does it do?
 ----------------
 
-This extension provides a booking system, yet an other one, we have to say. What is different in this one?
+This extension provides a booking system, yet an other one. But this one allows the booking of resources with different capacities e.g. theater seats etc.
 - flexible booking durations between a couple of minutes and a whole day (30 minutes as default)
 - flexible capacity: while other solutions allow to book or not to book an item, this one gives the option to reserve some parts of the total capacity, e.g. seats
 - Calender shows the number of free and booked seats.
@@ -28,8 +28,6 @@ This extension provides a booking system, yet an other one, we have to say. What
 Screenshots
 -----------
 
-This chapter should help people figure how the extension works. Remove it
-if not relevant.
 
 .. figure:: ../Images/IntroductionPackage.png
 :width: 500px

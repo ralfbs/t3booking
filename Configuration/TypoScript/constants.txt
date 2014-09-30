@@ -14,4 +14,24 @@ plugin.tx_t3booking {
 		# cat=plugin.tx_t3booking//a; type=string; label=Default storage PID
 		storagePid =
 	}
+	settings {
+	    # cat=plugin.tx_t3booking//b; type=string; label=Fix Resource (ID);Always use this resource
+	    defaultResourceId =
+        # cat=plugin.tx_t3booking//c; type=string; label=Email Subject: Booking Request
+        emailSubjectRequest = Booking Request Received
+        # cat=plugin.tx_t3booking//d; type=string; label=Email Subject: Booking Confirmation
+        emailSubjectConfirm = Booking Confirmed
+        # cat=plugin.tx_t3booking//e; type=string; label=Email Subject: Booking Updated
+        emailSubjectUpdate = Booking Updated
+        # cat=plugin.tx_t3booking//e; type=string; label=Email Subject: Booking Deleted
+        emailSubjectDelete = Booking Deleted
+        # cat=plugin.tx_t3booking//f; type=string; label=Email Admin;Email address for admin emails
+        emailAdmin = booking@example.com
+        # cat=plugin.tx_t3booking//g; type=string; label=Email From Address;Sender address for all emails
+        emailFromAddress = booking@example.com
+        # cat=plugin.tx_t3booking//h; type=string; label=Email From Name;Sender Name for all emails
+        emailFromName = booking
+        # cat=plugin.tx_t3refs//h; type=boolean; label=Debug;Display debug information
+        debug = false
+	}
 }

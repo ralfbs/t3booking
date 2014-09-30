@@ -58,5 +58,18 @@ class CalendarController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
         $this->view->assign('today', $date);
     }
 
+    /**
+     * action admin Calendar - each booking is listed individu
+     *
+     * @return void
+     */
+    public function bookingsAction()
+    {
+        $date = new \DateTime;
+
+        $this->view->assign('today', $date);
+    }
+
+
 
 }

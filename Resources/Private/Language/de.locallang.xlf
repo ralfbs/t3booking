@@ -98,7 +98,7 @@
 
             <trans-unit id="tx_t3booking.show">
                 <source>Show</source>
-                <target state="translated">Zeigen</target>
+                <target state="translated">Anzeigen</target>
             </trans-unit>
             <trans-unit id="tx_t3booking.delete">
                 <source>Delete</source>

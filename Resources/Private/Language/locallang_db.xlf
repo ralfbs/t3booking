@@ -63,6 +63,9 @@
             <trans-unit id="tx_t3booking_flexform.calendar.config">
                 <source>Calendar Settings</source>
             </trans-unit>
+            <trans-unit id="tx_t3booking_flexform.calendar.availability">
+                <source>Available Slots</source>
+            </trans-unit>
             <trans-unit id="tx_t3booking_flexform.calendar.occupations">
                 <source>Capacities and Summaries</source>
             </trans-unit>

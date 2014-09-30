@@ -51,6 +51,13 @@ class BookingController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
      */
     protected $classificationRepository = NULL;
 
+    /**
+     * resourceRepository
+     *
+     * @var \Hri\T3booking\Domain\Repository\ResourceRepository
+     * @inject
+     */
+    protected $resourceRepository = NULL;
 
     /**
      * userRepository
@@ -139,6 +146,11 @@ class BookingController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
         $feuser = $this->frontendUserRepository->findByUid($user['uid']);
         if ($feuser instanceof \TYPO3\CMS\Extbase\Domain\Model\FrontendUser) {
             $newBooking->setUser($feuser);
+        }
+        if ($this->settings['defaultResourceId']) {
+            /** @var \Hri\T3booking\Domain\Model\Resource $resource */
+            $resource = $this->resourceRepository->findByUid($this->settings['defaultResourceId']);
+            $newBooking->setResource($resource);
         }
         $newBooking->setCreatedAt(new \DateTime());
         $this->bookingRepository->add($newBooking);

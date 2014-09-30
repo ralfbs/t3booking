@@ -3,14 +3,13 @@
 <f:section name="main">
     <p>Hallo {booking.user.name},</p>
 
-    <p>Your booking is updated:</p>
+    <p>We have received your booking request and will get in touch shortly.</p>
 
     <p>{booking.startAt ->
         f:format.date(format: 'd.m.Y')}
-    <br/>
+        <br/>
         {booking.startAt ->
         f:format.date(format: 'H:i')} - {booking.endAt -> f:format.date(format: 'H:i')}
     </p>
-
     <p>{booking.quantity} Persons</p>
 </f:section>

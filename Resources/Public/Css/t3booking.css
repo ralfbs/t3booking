@@ -57,7 +57,8 @@
   .tx-t3booking table.tx-t3booking-edit {
     border-collapse: separate;
     border-spacing: 10px; }
-    .tx-t3booking table.tx-t3booking-edit .comment {
+    .tx-t3booking table.tx-t3booking-edit .comment,
+    .tx-t3booking table.tx-t3booking-edit textarea {
       background-color: yellow;
       border: 1px solid #cccc00;
       color: #333333;
@@ -71,3 +72,5 @@
   .tx-t3booking table.tx-t3booking-buttons td {
     width: 100px;
     text-align: center; }
+  .tx-t3booking .fc-time-grid-event {
+    max-width: 170px; }

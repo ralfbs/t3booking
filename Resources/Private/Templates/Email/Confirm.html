@@ -3,11 +3,11 @@
 <f:section name="main">
     <p>Hallo {booking.user.name},</p>
 
-    <p>Your booking is updated:</p>
+    <p>Your booking is Confirmed</p>
 
     <p>{booking.startAt ->
         f:format.date(format: 'd.m.Y')}
-    <br/>
+        <br/>
         {booking.startAt ->
         f:format.date(format: 'H:i')} - {booking.endAt -> f:format.date(format: 'H:i')}
     </p>

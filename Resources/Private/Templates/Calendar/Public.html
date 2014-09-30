@@ -8,6 +8,7 @@
         $(document).ready(function () {
 
             $('#calendar').fullCalendar({
+                height: 360,
                 header: {
                     left: 'prev,next today',
                     center: 'title',
@@ -20,6 +21,8 @@
                 allDaySlot: false,
                 minTime: "08:00",
                 maxTime: "23:00",
+
+                hiddenDays: [ 0, 6 ],
 
                 editable: false,
                 selectable: true,
@@ -35,7 +38,8 @@
                         url: '/?type=5000',
                         // cache: true,
                         // color: '#ff0000',    // an option!
-                        textColor: '#333'  // an option!
+                        textColor: 'transparent'  // an option!
+
                     }
                 ]
             });

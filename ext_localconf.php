@@ -20,7 +20,7 @@ if (!defined('TYPO3_MODE')) {
     'Hri.' . $_EXTKEY,
     'Calendar',
     array(
-        'Calendar' => 'public, admin',
+        'Calendar' => 'public, admin, bookings',
 
     ),
     // non-cacheable actions
@@ -34,12 +34,12 @@ if (!defined('TYPO3_MODE')) {
     'Hri.' . $_EXTKEY,
     'Json',
     array(
-        'Json' => 'requests, bookings, occupations,',
+        'Json' => 'availabilities, requests, bookings, occupations,',
 
     ),
     // non-cacheable actions
     array(
-        'Booking' => 'requests, bookings, occupations,',
+        'Booking' => 'availabilities, requests, bookings, occupations,',
 
     )
 );
@@ -50,6 +50,24 @@ $signalSlotDispatcher = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
 );
 $signalSlotDispatcher->connect(
     'Hri\\T3booking\\Controller\\BookingController',
+    'bookingCreate',
+    'Hri\\T3booking\\Service\\EmailService',
+    'handleBookingRequest');
+
+$signalSlotDispatcher->connect(
+    'Hri\\T3booking\\Controller\\BookingController',
+    'bookingConfirm',
+    'Hri\\T3booking\\Service\\EmailService',
+    'handleBookingConfirm');
+
+$signalSlotDispatcher->connect(
+    'Hri\\T3booking\\Controller\\BookingController',
     'bookingUpdate',
-    'Hri\\T3booking\\Service\\SignalService',
+    'Hri\\T3booking\\Service\\EmailService',
     'handleBookingUpdate');
+
+$signalSlotDispatcher->connect(
+    'Hri\\T3booking\\Controller\\BookingController',
+    'bookingDelete',
+    'Hri\\T3booking\\Service\\EmailService',
+    'handleBookingDelete');

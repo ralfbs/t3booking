@@ -47,6 +47,7 @@ class Booking extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * Starzeitpunkt der Buchung
      *
      * @var \DateTime
+     * @validate NotEmpty,\Hri\T3booking\Validation\Validator\TimeValidator(duration=30)
      */
     protected $startAt = NULL;
 
@@ -61,6 +62,7 @@ class Booking extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * Endzeitpunkt der Buchung
      *
      * @var \DateTime
+     * @validate NotEmpty,\Hri\T3booking\Validation\Validator\TimeValidator(duration=30)
      */
     protected $endAt = NULL;
 
@@ -103,6 +105,7 @@ class Booking extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * confirmAt
      *
      * @var \DateTime
+     * @ignorevalidation
      */
     protected $confirmAt = NULL;
 
@@ -110,8 +113,9 @@ class Booking extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * confirmBy
      *
      * @var \TYPO3\CMS\Extbase\Domain\Model\FrontendUser
+     * @ignorevalidation
      */
-    protected $confirmBy = 0;
+    protected $confirmBy = NULL;
 
     /**
      * confirmComment
@@ -133,6 +137,7 @@ class Booking extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var \Hri\t3booking\Domain\Model\Classification
      */
     protected $classification = NULL;
+
     /**
      * Returns the startAt
      *
@@ -287,7 +292,8 @@ class Booking extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @return string comment
      */
-    public function getComment() {
+    public function getComment()
+    {
         return $this->comment;
     }
 
@@ -297,7 +303,8 @@ class Booking extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $comment
      * @return string comment
      */
-    public function setComment($comment) {
+    public function setComment($comment)
+    {
         $this->comment = $comment;
     }
 
@@ -306,7 +313,8 @@ class Booking extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @return \DateTime $createdAt
      */
-    public function getCreatedAt() {
+    public function getCreatedAt()
+    {
         return $this->createdAt;
     }
 
@@ -316,7 +324,8 @@ class Booking extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param \DateTime $createdAt
      * @return void
      */
-    public function setCreatedAt(\DateTime $createdAt) {
+    public function setCreatedAt(\DateTime $createdAt)
+    {
         $this->createdAt = $createdAt;
     }
 
@@ -325,7 +334,8 @@ class Booking extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @return \DateTime $confirmAt
      */
-    public function getConfirmAt() {
+    public function getConfirmAt()
+    {
         return $this->confirmAt;
     }
 
@@ -335,7 +345,8 @@ class Booking extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param \DateTime $confirmAt
      * @return void
      */
-    public function setConfirmAt(\DateTime $confirmAt) {
+    public function setConfirmAt(\DateTime $confirmAt)
+    {
         $this->confirmAt = $confirmAt;
     }
 
@@ -344,7 +355,8 @@ class Booking extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @return \TYPO3\CMS\Extbase\Domain\Model\FrontendUser $confirmBy
      */
-    public function getConfirmBy() {
+    public function getConfirmBy()
+    {
         return $this->confirmBy;
     }
 
@@ -352,9 +364,11 @@ class Booking extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * Sets the confirmBy
      *
      * @param \TYPO3\CMS\Extbase\Domain\Model\FrontendUser $confirmBy
+     * @ignorevalidation
      * @return void
      */
-    public function setConfirmBy(\TYPO3\CMS\Extbase\Domain\Model\FrontendUser $confirmBy) {
+    public function setConfirmBy(\TYPO3\CMS\Extbase\Domain\Model\FrontendUser $confirmBy)
+    {
         $this->confirmBy = $confirmBy;
     }
 
@@ -363,7 +377,8 @@ class Booking extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @return string $confirmComment
      */
-    public function getConfirmComment() {
+    public function getConfirmComment()
+    {
         return $this->confirmComment;
     }
 
@@ -373,7 +388,8 @@ class Booking extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $confirmComment
      * @return void
      */
-    public function setConfirmComment($confirmComment) {
+    public function setConfirmComment($confirmComment)
+    {
         $this->confirmComment = $confirmComment;
     }
 
@@ -382,7 +398,8 @@ class Booking extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @return \Hri\t3booking\Domain\Model\Resource $resource
      */
-    public function getResource() {
+    public function getResource()
+    {
         return $this->resource;
     }
 
@@ -392,7 +409,8 @@ class Booking extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param \Hri\t3booking\Domain\Model\Resource $resource
      * @return void
      */
-    public function setResource(\Hri\t3booking\Domain\Model\Resource $resource) {
+    public function setResource(\Hri\t3booking\Domain\Model\Resource $resource)
+    {
         $this->resource = $resource;
     }
 
@@ -401,7 +419,8 @@ class Booking extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @return \Hri\t3booking\Domain\Model\Classification classification
      */
-    public function getClassification() {
+    public function getClassification()
+    {
         return $this->classification;
     }
 
@@ -411,7 +430,8 @@ class Booking extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param \Hri\t3booking\Domain\Model\Classification $classification
      * @return \Hri\t3booking\Domain\Model\Classification classification
      */
-    public function setClassification(\Hri\t3booking\Domain\Model\Classification $classification) {
+    public function setClassification(\Hri\t3booking\Domain\Model\Classification $classification)
+    {
         $this->classification = $classification;
     }
 

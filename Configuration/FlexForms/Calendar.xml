@@ -16,12 +16,16 @@
                                 <type>select</type>
                                 <items type="array">
                                     <numIndex index="1" type="array">
-                                        <numIndex index="0">LLL:EXT:t3booking/Resources/Private/Language/locallang_db.xlf:tx_t3booking_flexform.calendar.occupations</numIndex>
+                                        <numIndex index="0">LLL:EXT:t3booking/Resources/Private/Language/locallang_db.xlf:tx_t3booking_flexform.calendar.availability</numIndex>
                                         <numIndex index="1">Calendar->public</numIndex>
                                     </numIndex>
                                     <numIndex index="2" type="array">
-                                        <numIndex index="0">LLL:EXT:t3booking/Resources/Private/Language/locallang_db.xlf:tx_t3booking_flexform.calendar.bookings</numIndex>
+                                        <numIndex index="0">LLL:EXT:t3booking/Resources/Private/Language/locallang_db.xlf:tx_t3booking_flexform.calendar.occupations</numIndex>
                                         <numIndex index="1">Calendar->admin</numIndex>
+                                    </numIndex>
+                                    <numIndex index="3" type="array">
+                                        <numIndex index="0">LLL:EXT:t3booking/Resources/Private/Language/locallang_db.xlf:tx_t3booking_flexform.calendar.bookings</numIndex>
+                                        <numIndex index="1">Calendar->bookings</numIndex>
                                     </numIndex>
                                 </items>
                             </config>
