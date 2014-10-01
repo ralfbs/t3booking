@@ -126,6 +126,13 @@
             <trans-unit id="tx_t3booking_domain_model_booking.newBooking.startAt">
                 <source>Start</source>
             </trans-unit>
+
+            <trans-unit id="tx_t3booking_domain_model_booking.booking.endAt">
+                <source>End</source>
+            </trans-unit>
+            <trans-unit id="tx_t3booking_domain_model_booking.newBooking.endAt">
+                <source>End</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>

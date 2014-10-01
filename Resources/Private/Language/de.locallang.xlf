@@ -153,9 +153,19 @@
 
             <trans-unit id="tx_t3booking_domain_model_booking.booking.startAt">
                 <source>Start</source>
+                <target state="translated">Anfang</target>
             </trans-unit>
             <trans-unit id="tx_t3booking_domain_model_booking.newBooking.startAt">
                 <source>Start</source>
+                <target state="translated">Anfang</target>
+            </trans-unit>
+            <trans-unit id="tx_t3booking_domain_model_booking.booking.endAt">
+                <source>End</source>
+                <target state="translated">Ende</target>
+            </trans-unit>
+            <trans-unit id="tx_t3booking_domain_model_booking.newBooking.endAt">
+                <source>End</source>
+                <target state="translated">Ende</target>
             </trans-unit>
         </body>
     </file>
