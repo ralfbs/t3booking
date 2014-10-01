@@ -81,33 +81,6 @@ $GLOBALS['TCA']['tx_t3booking_domain_model_resource'] = array(
     ),
 );
 
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_t3booking_domain_model_classification', 'EXT:t3booking/Resources/Private/Language/locallang_csh_tx_t3booking_domain_model_classification.xlf');
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_t3booking_domain_model_classification');
-$GLOBALS['TCA']['tx_t3booking_domain_model_classification'] = array(
-    'ctrl' => array(
-        'title'	=> 'LLL:EXT:t3booking/Resources/Private/Language/locallang_db.xlf:tx_t3booking_domain_model_classification',
-        'label' => 'name',
-        'tstamp' => 'tstamp',
-        'crdate' => 'crdate',
-        'cruser_id' => 'cruser_id',
-        'dividers2tabs' => TRUE,
-
-        'languageField' => 'sys_language_uid',
-        'transOrigPointerField' => 'l10n_parent',
-        'transOrigDiffSourceField' => 'l10n_diffsource',
-        'delete' => 'deleted',
-        'enablecolumns' => array(
-            'disabled' => 'hidden',
-            'starttime' => 'starttime',
-            'endtime' => 'endtime',
-        ),
-        'searchFields' => 'name,',
-        'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Configuration/TCA/Classification.php',
-        'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'Resources/Public/Icons/tx_t3booking_domain_model_classification.gif'
-    ),
-);
-
-
 
 
 // Flexform hinzufügen: Kalendar

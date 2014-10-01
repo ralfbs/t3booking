@@ -38,7 +38,6 @@ class BookingValidator extends \TYPO3\CMS\Extbase\Validation\Validator\AbstractV
      */
     public function isValid($object)
     {
-        $ret = true;
         /* @var \Hri\T3booking\Domain\Model\Booking $object */
         if (!$object instanceof \Hri\T3booking\Domain\Model\Booking) {
             return true;
@@ -64,10 +63,7 @@ class BookingValidator extends \TYPO3\CMS\Extbase\Validation\Validator\AbstractV
             $ret = false;
         }
 
-
-
-        // $this->result->forProperty('quantity')->addError(new \TYPO3\CMS\Extbase\Error\Error('Das geht ja mal gar nicht'));
-        return $ret;
+        return true;
     }
 
 }

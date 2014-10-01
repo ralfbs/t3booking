@@ -49,17 +49,28 @@ class BookingRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 
     /**
      * Find only future booked
+     * @param \DateTime $end
      * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
      */
-    public function findAllFutureConfirmed()
+    public function findAllFutureConfirmed($end = null)
     {
         // find only values from today onwards
         $today = new \DateTime('0:00');
         $query = $this->createQuery();
-        $query = $query->matching(
-            $query->logicalAnd(
-                $query->greaterThanOrEqual('start_at', $today->getTimestamp()),
-                $query->equals('status', 1)));
+
+        if ($end) {
+            $end->setTime(23,0);
+            $query = $query->matching(
+                $query->logicalAnd(
+                    $query->greaterThanOrEqual('start_at', $today->getTimestamp()),
+                    $query->equals('status', 1),
+                    $query->lessThanOrEqual('end_at', $end->getTimestamp())));
+        } else {
+            $query = $query->matching(
+                $query->logicalAnd(
+                    $query->greaterThanOrEqual('start_at', $today->getTimestamp()),
+                    $query->equals('status', 1)));
+        }
         return $query->execute();
     }
 

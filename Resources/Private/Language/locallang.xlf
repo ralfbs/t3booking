@@ -25,6 +25,9 @@
             <trans-unit id="tx_t3booking_domain_model_booking.status.request">
                 <source>Request</source>
             </trans-unit>
+            <trans-unit id="tx_t3booking_domain_model_booking.status.not_confirmed">
+                <source>Booking not confirmed</source>
+            </trans-unit>
             <trans-unit id="tx_t3booking_domain_model_booking.status.booking">
                 <source>Booking</source>
             </trans-unit>
@@ -94,6 +97,18 @@
             </trans-unit>
             <trans-unit id="tx_t3booking.back">
                 <source>back</source>
+            </trans-unit>
+            <trans-unit id="tx_t3booking.today">
+                <source>today</source>
+            </trans-unit>
+            <trans-unit id="tx_t3booking.tomorrow">
+                <source>tomorrow</source>
+            </trans-unit>
+            <trans-unit id="tx_t3booking.week">
+                <source>week</source>
+            </trans-unit>
+            <trans-unit id="tx_t3booking.all">
+                <source>all</source>
             </trans-unit>
 
 

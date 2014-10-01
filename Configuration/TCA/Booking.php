@@ -110,10 +110,9 @@ $GLOBALS['TCA']['tx_t3booking_domain_model_booking'] = array(
             'exclude' => 1,
             'label' => 'LLL:EXT:t3booking/Resources/Private/Language/locallang_db.xlf:tx_t3booking_domain_model_booking.classification',
             'config' => array(
-                'type' => 'select',
-                'foreign_table' => 'tx_t3booking_domain_model_classification',
-                'minitems' => 0,
-                'maxitems' => 1,
+                'type' => 'input',
+                'size' => 30,
+                'eval' => 'trim'
             ),
         ),
         'confirm_at' => array(

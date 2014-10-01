@@ -244,11 +244,8 @@ class JsonController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         if ($booking->getUser() instanceof \TYPO3\CMS\Extbase\Domain\Model\FrontendUser) {
             $company = $booking->getUser()->getCompany();
         }
-        $classification = '';
-        if ($booking->getClassification() instanceof \Hri\T3booking\Domain\Model\Classification) {
-            $classification = $booking->getClassification()->getName();
-        }
-        $getTitle = sprintf("%s | %s | %s Personen", $company, $classification, $booking->getQuantity());
+
+        $getTitle = sprintf("%s | %s | %s Personen", $company, $booking->getClassification(), $booking->getQuantity());
         return $getTitle;
     }
 }

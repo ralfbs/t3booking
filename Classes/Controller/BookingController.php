@@ -42,15 +42,6 @@ class BookingController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
      */
     protected $bookingRepository = NULL;
 
-
-    /**
-     * classificationRepository
-     *
-     * @var \Hri\T3booking\Domain\Repository\ClassificationRepository
-     * @inject
-     */
-    protected $classificationRepository = NULL;
-
     /**
      * resourceRepository
      *
@@ -128,8 +119,6 @@ class BookingController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
      */
     public function newAction(\Hri\T3booking\Domain\Model\Booking $newBooking = NULL)
     {
-        $classifications = $this->classificationRepository->findAll();
-        $this->view->assign('classifications', $classifications);
         $this->view->assign('newBooking', $newBooking);
     }
 
@@ -180,12 +169,37 @@ class BookingController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 
     /**
      * Admin: bookings - alle fixen Buchungen auflisten
-     *
+     * @param string $scope
+     * @ignorevalidation $scope
      * @return void
      */
     public function bookingsAction()
     {
-        $bookings = $this->bookingRepository->findAllFutureConfirmed();
+        $scope = 'all';
+        if ($this->request->hasArgument('scope')) {
+            $scope = $this->request->getArgument('scope', 'all');
+        }
+        switch ($scope) {
+            case 'today':
+                $end = new \DateTime();
+                $this->view->assign('buttonselected', 1);
+                break;
+            case 'tomorrow':
+                $end = new \DateTime();
+                $end->add(new \DateInterval("P1D"));
+                $this->view->assign('buttonselected', 2);
+                break;
+            case 'week':
+                $end = new \DateTime();
+                $end->add(new \DateInterval("P6D"));
+                $this->view->assign('buttonselected', 3);
+                break;
+            default:
+                $this->view->assign('buttonselected', 4);
+                $end = null;
+                break;
+        }
+        $bookings = $this->bookingRepository->findAllFutureConfirmed($end);
         $this->view->assign('bookings', $bookings);
     }
 

@@ -134,9 +134,9 @@ class Booking extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * classification
      *
-     * @var \Hri\t3booking\Domain\Model\Classification
+     * @var string
      */
-    protected $classification = NULL;
+    protected $classification = '';
 
     /**
      * Returns the startAt
@@ -417,7 +417,7 @@ class Booking extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Returns the classification
      *
-     * @return \Hri\t3booking\Domain\Model\Classification classification
+     * @return string
      */
     public function getClassification()
     {
@@ -427,10 +427,10 @@ class Booking extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Sets the classification
      *
-     * @param \Hri\t3booking\Domain\Model\Classification $classification
-     * @return \Hri\t3booking\Domain\Model\Classification classification
+     * @param string
+     * @return void
      */
-    public function setClassification(\Hri\t3booking\Domain\Model\Classification $classification)
+    public function setClassification($classification)
     {
         $this->classification = $classification;
     }

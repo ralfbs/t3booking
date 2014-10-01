@@ -41,8 +41,6 @@ class BookingControllerTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase
     {
         $this->subject = $this->getMock('Hri\\T3booking\\Controller\\BookingController', array('redirect', 'forward', 'addFlashMessage'), array(), '', FALSE);
 
-        $this->classificationRepository = $this->getMock('Hri\\T3booking\\Domain\\Repository\\ClassificationRepository', array('findAll'), array(), '', FALSE);
-        $this->inject($this->subject, 'classificationRepository', $this->classificationRepository);
     }
 
     protected function tearDown()

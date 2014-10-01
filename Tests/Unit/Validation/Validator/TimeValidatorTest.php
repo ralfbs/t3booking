@@ -80,6 +80,7 @@ class TimeValidatorTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
     public function test23IsValid()
     {
         $date = new \DateTime();
+        $date->add(new \DateInterval("P1D")); // tomorrow
         $date->setTime(23, 0);
         $this->assertTrue($this->subject->isValid($date));
     }

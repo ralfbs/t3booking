@@ -35,6 +35,10 @@
                 <source>Booking</source>
                 <target state="translated">Buchung</target>
             </trans-unit>
+            <trans-unit id="tx_t3booking_domain_model_booking.status.not_confirmed">
+                <source>Booking not confirmed</source>
+                <target state="translated">Buchung noch nicht bestätigt</target>
+            </trans-unit>
             <trans-unit id="tx_t3booking_domain_model_booking.quantity">
                 <source>Quantity</source>
                 <target state="translated">Anzahl</target>
@@ -44,7 +48,7 @@
             </trans-unit>
             <trans-unit id="tx_t3booking_domain_model_booking.user">
                 <source>User</source>
-                <target state="translated">Benutzer</target>
+                <target state="translated">Gebucht von</target>
             </trans-unit>
             <trans-unit id="tx_t3booking_domain_model_booking.comment">
                 <source>Comment</source>
@@ -119,6 +123,22 @@
             <trans-unit id="tx_t3booking.back">
                 <source>back</source>
                 <target state="translated">Zurück</target>
+            </trans-unit>
+            <trans-unit id="tx_t3booking.today">
+                <source>today</source>
+                <target state="translated">Heute</target>
+            </trans-unit>
+            <trans-unit id="tx_t3booking.tomorrow">
+                <source>tomorrow</source>
+                <target state="translated">Morgen</target>
+            </trans-unit>
+            <trans-unit id="tx_t3booking.week">
+                <source>week</source>
+                <target state="translated">Woche</target>
+            </trans-unit>
+            <trans-unit id="tx_t3booking.all">
+                <source>all</source>
+                <target state="translated">Alle</target>
             </trans-unit>
 
 

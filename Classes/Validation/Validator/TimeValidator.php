@@ -46,15 +46,18 @@ class TimeValidator extends \TYPO3\CMS\Extbase\Validation\Validator\AbstractVali
      */
     public function isValid($property)
     {
+        if (! $property instanceof \DateTime) {
+            $this->addError("Validation is only available for DateTime!", 1412161063);
+            return false;
+        }
         /** @var $property \DateTime */
-
-        $start = new \DateTime();
+        $start = clone $property;
         $start->setTime(8, 0);
         if ($start->getTimestamp() > $property->getTimestamp()) {
             $this->addError('Früheste Buchung ab 8:00 möglich', 1411999101);
             return false;
         }
-        $end = new \DateTime();
+        $end = clone $property;
         $end->setTime(23, 0);
         if ($end->getTimestamp() < $property->getTimestamp()) {
             $this->addError('Späteste Buchung bis 23:00 möglich', 1411999201);
