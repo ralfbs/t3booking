@@ -29,7 +29,7 @@
             <tr>
                 <td class="cal">
                     <f:link.action action="show" arguments="{booking : booking}" class="btn">
-                        <f:image src="EXT:t3booking/Resources/Public/Icons/cal.png" alt="Show"/>
+                        <f:image src="EXT:t3booking/Resources/Public/Icons/view.png" alt="{f:translate(key: 'tx_t3booking.show')}"/>
                     </f:link.action>
                 </td>
                 <td class="date">{booking.startAt ->
@@ -44,12 +44,6 @@
                 <td class="quantity">
                     {booking.quantity}
                     <f:translate key="tx_t3booking_domain_model_booking.unit"/>
-                </td>
-                <td class="icon">
-                    <f:link.action action="show" arguments="{booking : booking}">
-                        <f:image src="EXT:t3booking/Resources/Public/Icons/show.png"
-                                 alt="{f:translate(key: 'tx_t3booking.show')}"/>
-                    </f:link.action>
                 </td>
             </tr>
         </f:for>

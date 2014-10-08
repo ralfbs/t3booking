@@ -4,6 +4,8 @@ plugin.tx_t3booking {
 		templateRootPath = {$plugin.tx_t3booking.view.templateRootPath}
 		partialRootPath = {$plugin.tx_t3booking.view.partialRootPath}
 		layoutRootPath = {$plugin.tx_t3booking.view.layoutRootPath}
+        emailTemplateRootPath = {$plugin.tx_t3booking.view.emailTemplateRootPath}
+        emailLayoutRootPath = {$plugin.tx_t3booking.view.emailLayoutRootPath}
 	}
 	persistence {
 		storagePid = {$plugin.tx_t3booking.persistence.storagePid}
@@ -21,7 +23,6 @@ plugin.tx_t3booking {
         emailAdmin = {$plugin.tx_t3booking.settings.emailAdmin}
         emailFromAddress = {$plugin.tx_t3booking.settings.emailFromAddress}
         emailFromName = {$plugin.tx_t3booking.settings.emailFromName}
-        emailRootPath = {$plugin.tx_t3booking.settings.emailRootPath}
         debug = {$plugin.tx_t3booking.settings.debug}
 	}
 

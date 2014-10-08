@@ -58,8 +58,10 @@ class EmailService extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController im
      */
     public function init()
     {
+        // $objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance("TYPO3\\CMS\\Extbase\\Object\\ObjectManager");
+        // $this->configurationManager = $objectManager;
         $this->settings = $this->configurationManager->getConfiguration(\TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS, 't3booking', 'Bookings');
-
+        $this->log(var_export($this->settings, true));
         $this->logger = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\CMS\Core\Log\LogManager')->getLogger(__CLASS__);
 
         $this->mailMessage = $this->objectManager->get('TYPO3\\CMS\\Core\\Mail\\MailMessage');
@@ -74,7 +76,6 @@ class EmailService extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController im
     public function handleBookingRequest(\Hri\T3booking\Domain\Model\Booking $booking, $signalInformation)
     {
         $this->init();
-
         $this->mailMessage->setSubject($this->settings['emailSubjectRequest']);
         $this->processMail($booking, 'Create');
     }
@@ -144,6 +145,8 @@ class EmailService extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController im
 
         $this->mailMessage->addTo($booking->getUser()->getEmail(), $booking->getUser()->getName());
 
+        $logMsg = $this->mailMessage->getSubject();
+        $this->log("E-Mail-Subject: " . $logMsg);
         try {
             $this->mailMessage->send();
         } catch (\Exception $e) {
@@ -162,12 +165,13 @@ class EmailService extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController im
     protected function createView($emailTemplate, $ext = 'html')
     {
         $extbaseFrameworkConfiguration = $this->configurationManager->getConfiguration(\TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK, 't3booking', 'Bookings');
-        $templateRootPath = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($extbaseFrameworkConfiguration['view']['templateRootPath']);
-        $layoutRootPath = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($extbaseFrameworkConfiguration['view']['layoutRootPath']);
+        $templateRootPath = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($extbaseFrameworkConfiguration['view']['emailTemplateRootPath']);
+        $layoutRootPath = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($extbaseFrameworkConfiguration['view']['emailLayoutRootPath']);
 
         /* @var \TYPO3\CMS\Fluid\View\StandaloneView $view */
         $view = $this->objectManager->get('TYPO3\\CMS\\Fluid\\View\\StandaloneView');
-        $templatePathAndFilename = $templateRootPath . "Email/{$emailTemplate}.{$ext}";
+        $templatePathAndFilename = $templateRootPath . "{$emailTemplate}.{$ext}";
+        $this->log("E-Mail-Template: " . $templatePathAndFilename);
         $view->setTemplatePathAndFilename($templatePathAndFilename);
         $view->setLayoutRootPath($layoutRootPath);
         return $view;
