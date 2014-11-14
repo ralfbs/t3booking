@@ -140,8 +140,10 @@ class EmailService extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController im
             $this->logger->error($message);
             return;
         }
-        $this->mailMessage->setBody($message, 'text/html');
-        $this->mailMessage->setBody(strip_tags($message), 'text/plain');
+        // $this->mailMessage->getHeaders()->remove('Content-Transfer-Encoding');
+        // $this->mailMessage->getHeaders()->addTextHeader('Content-Transfer-Encoding', '8bit');
+        $this->mailMessage->setBody(strip_tags($message));
+        // $this->mailMessage->addPart($message, 'text/html');
 
         $this->mailMessage->addTo($booking->getUser()->getEmail(), $booking->getUser()->getName());
 

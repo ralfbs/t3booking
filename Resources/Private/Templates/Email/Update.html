@@ -1,14 +1,13 @@
 <f:layout name="Email"/>
 
 <f:section name="main">
-    <p>Sehr geehrte(r) {booking.user.name},</p>
+Sehr geehrte(r) {booking.user.name},
 
-    <p>Hiermit bestätigen wir die Änderung Ihrer Buchungsanfrage im Eislaufkalender des Lentparks Köln mit folgenden
-        neuen Buchungsdetails:</p>
+Hiermit bestätigen wir die Änderung Ihrer Buchungsanfrage im Eislaufkalender des Lentparks Köln mit folgenden
+neuen Buchungsdetails:
 
-    <p>Datum: booking.startAt -> f:format.date(format: 'd.m.Y')}</br>
-        Uhrzeit: {booking.startAt ->
-        f:format.date(format: 'H:i')} - {booking.endAt -> f:format.date(format: 'H:i')}<br/>
-        Personen: {booking.quantity}<br/>
-        Klasse: {booking.classification}</p>
+Datum: {booking.startAt -> f:format.date(format: 'd.m.Y')}
+Uhrzeit: {booking.startAt -> f:format.date(format: 'H:i')} - {booking.endAt -> f:format.date(format: 'H:i')}
+Personen: {booking.quantity}
+Klasse: {booking.classification}
 </f:section>
